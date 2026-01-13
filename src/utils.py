@@ -61,7 +61,7 @@ def create_callbacks(early_stop_patience: int = 5, model_name: str = ''):
         
         return callbacks
 
-"""def get_logger(log_dir: str = 'logs/', name: str = 'neuralforecast'):
+def get_logger(log_dir: str = 'logs/', name: str = 'neuralforecast'):
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
     logger = TensorBoardLogger(
@@ -71,7 +71,7 @@ def create_callbacks(early_stop_patience: int = 5, model_name: str = ''):
         default_hp_metric=False
     )
     return logger
-"""
+
 # Configuration
 def get_auto_model_config(  
                           n_trials, 
