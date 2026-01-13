@@ -1,3 +1,5 @@
 checkpoints/
 outputs/
 *.pptx
+*.docs
+.DS_Store
