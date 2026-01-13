@@ -1,10 +1,11 @@
 from test_env import TestEnv
 from agent import UCBAgent
-from utils import convert_to_nf_dataframe
+from utils import convert_to_nf_dataframe, setup_logging, create_episode_summary_table,save_episode_csv
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import os
 import ray
+import logging
 import argparse
 ray.init(include_dashboard=False, _metrics_export_port=None)
 os.environ['RAY_TRAIN_ENABLE_V2_MIGRATION_WARNINGS'] = '0'
@@ -38,6 +39,12 @@ def main() -> None:
     parser.add_argument('--ucb-c', type=float, default=2.0,
                        help='UCB exploration parameter')
     args = parser.parse_args()
+
+    #root_logger = setup_logging(log_dir='logs/', name='ucb_test_env')
+
+
+
+
     if not ray.is_initialized():
         ray.init(include_dashboard=False, _metrics_export_port=None)
     os.environ['RAY_TRAIN_ENABLE_V2_MIGRATION_WARNINGS'] = '0'
