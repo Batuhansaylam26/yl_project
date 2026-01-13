@@ -85,9 +85,9 @@ def get_auto_model_config(
         'loss': MSE(),                    # Loss function
         'valid_loss': MSE(),              # Validation loss
         'num_samples': n_trials,     # Optuna trial sayısı
-        'max_steps': 1000,
         'config': {
             'val_check_steps': 1,            # Her  step'te validation
+            'max_steps': 1000,               # Maksimum eğitim step sayısı
             'batch_size': tune.choice([32, 64, 128]),               # Auto-tune
             'learning_rate': tune.loguniform(1e-5, 1e-1),            # Auto-tune
             'callbacks': callbacks,

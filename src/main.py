@@ -7,8 +7,8 @@ import os
 import ray
 import logging
 import argparse
-ray.init(include_dashboard=False, _metrics_export_port=None)
-os.environ['RAY_TRAIN_ENABLE_V2_MIGRATION_WARNINGS'] = '0'
+#ray.init(include_dashboard=False, _metrics_export_port=None)
+#os.environ['RAY_TRAIN_ENABLE_V2_MIGRATION_WARNINGS'] = '0'
 
 
 def main() -> None:
@@ -126,3 +126,6 @@ def main() -> None:
     env.close()
     
     print("Eğitim tamamlandı.")
+
+if __name__ == "__main__":
+    main()

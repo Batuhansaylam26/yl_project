@@ -48,7 +48,6 @@ class UCBAgent:
             'mean_rewards': self.mean_rewards.tolist(),
             'total_rewards': self.total_rewards.tolist(),
             'best_action': int(np.argmax(self.mean_rewards)) if self.t > 0 else 0,
-            'avg_reward': float(np.mean(self.reward_history)) if self.reward_history else 0
         }
 
 
