@@ -11,7 +11,7 @@ import time
 import json
 from datetime import datetime
 import matplotlib
-matplotlib.use('Agg')  # Backend for non-interactive plotting
+matplotlib.use('Agg') 
 import matplotlib.pyplot as plt
 from math import pi
 
