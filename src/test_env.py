@@ -5,7 +5,7 @@ from neuralforecast.auto import AutoTimesNet, AutoVanillaTransformer, AutoGRU, A
 from neuralforecast import NeuralForecast
 from typing import Tuple, Dict, Optional, List
 from sklearn.metrics import mean_squared_error, r2_score
-from utils import create_callbacks, get_auto_model_config
+from utils import create_callbacks, timesNet_config, LSTM_config, GRU_config, KAN_config, VanillaTransformer_config, get_auto_model_config
 import os
 import time
 import json
@@ -142,31 +142,49 @@ class TestEnv(Env):
         
         return best_model if best_model else self.models[0]
     
-    def create_model(self, model_name: str):
-        """Belirtilen modeli oluşturur"""
-        callbacks = create_callbacks(
-            early_stop_patience=self.model_patience,
-            model_name=model_name.lower()
-        )
-        config = get_auto_model_config(
-            horizon=self.horizon,
-            n_trials=self.model_n_trials,
-            callbacks=callbacks,
-            logger_name=f'neuralforecast_{model_name.lower()}'
-        )
-        
-        if self.use_exog and self.exog_vars:
-            config['hist_exog_list'] = self.exog_vars
-        
+    def create_model(self, model_name: str):   
         if model_name == 'TimesNet':
+            config = get_auto_model_config(
+                horizon=self.horizon,
+                n_trials=self.model_n_trials,
+                model_name=model_name
+            )
+            if self.use_exog and self.exog_vars:
+                config['hist_exog_list'] = self.exog_vars
             return AutoTimesNet(**config)
         elif model_name == 'VanillaTransformer':
+            config = get_auto_model_config(
+                horizon=self.horizon,
+                n_trials=self.model_n_trials,
+                model_name=model_name
+            )
             return AutoVanillaTransformer(**config)
         elif model_name == 'GRU':
+            config = get_auto_model_config(
+                horizon=self.horizon,
+                n_trials=self.model_n_trials,
+                model_name=model_name
+            )
+            if self.use_exog and self.exog_vars:
+                config['hist_exog_list'] = self.exog_vars
             return AutoGRU(**config)
         elif model_name == 'LSTM':
+            config = get_auto_model_config(
+                horizon=self.horizon,
+                n_trials=self.model_n_trials,
+                model_name=model_name
+            )
+            if self.use_exog and self.exog_vars:
+                config['hist_exog_list'] = self.exog_vars
             return AutoLSTM(**config)
         elif model_name == 'KAN':
+            config = get_auto_model_config(
+                horizon=self.horizon,
+                n_trials=self.model_n_trials,
+                model_name=model_name
+            )
+            if self.use_exog and self.exog_vars:
+                config['hist_exog_list'] = self.exog_vars
             return AutoKAN(**config)
         else:
             raise ValueError(f"Unknown model: {model_name}")

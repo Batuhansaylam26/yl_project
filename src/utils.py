@@ -1,8 +1,11 @@
 import os
 import sys
 import logging
+import optuna
+import torch
 import logging.handlers
 import pandas as pd
+import numpy as np
 from datetime import datetime
 from typing import Optional
 from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
@@ -10,6 +13,7 @@ from neuralforecast.losses.pytorch import MSE
 from pytorch_lightning.loggers import TensorBoardLogger
 from ray import tune
 from JsonHandler import JsonHandler
+from lightning.pytorch.loggers import WandbLogger
 def convert_to_nf_dataframe(
         df: pd.DataFrame, 
         time_col: str, 
@@ -61,45 +65,11 @@ def create_callbacks(early_stop_patience: int = 5, model_name: str = ''):
         
         return callbacks
 
-def get_logger(log_dir: str = 'logs/', name: str = 'neuralforecast'):
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
-    logger = TensorBoardLogger(
-        save_dir=log_dir,
-        name=name,
-        version=None,
-        default_hp_metric=False
-    )
-    return logger
+def get_logger(name: str = 'neuralforecast'):
+    wandb_logger = WandbLogger(project=name)
 
-# Configuration
-def get_auto_model_config(  
-                          n_trials, 
-                          callbacks, 
-                          horizon:int = 20,
-                          logger_name: str = 'neuralforecast'
-                          
-) -> dict:
-    return {
-        'h': horizon,
-        'loss': MSE(),                    # Loss function
-        'valid_loss': MSE(),              # Validation loss
-        'num_samples': n_trials,     # Optuna trial sayısı
-        'config': {
-            'val_check_steps': 1,            # Her  step'te validation
-            'max_steps': 1000,               # Maksimum eğitim step sayısı
-            'batch_size': tune.choice([32, 64, 128]),               # Auto-tune
-            'learning_rate': tune.loguniform(1e-5, 1e-1),            # Auto-tune
-            'callbacks': callbacks,
-            'accelerator': 'auto',        # GPU varsa kullan
-            'enable_progress_bar': True, # Progress bar kapat (gym için)
-            'input_size': tune.randint(7, 24),
-            'enable_model_summary': True,
-            'logger': get_logger(logger_name),
-            'enable_checkpointing': True,
-            'enable_progress_bar': True
-        }
-    }
+    return wandb_logger
+
 
 def setup_logging(log_dir: str, verbose: bool = False):
 
@@ -221,3 +191,196 @@ def save_episode_csv(episode_stats: list, log_dir: str):
     csv_path = f"{log_dir}/episode_summary.csv"
     df_simple.to_csv(csv_path, index=False)
     logging.info(f"✓ Episode summary CSV saved: {csv_path}")
+
+
+
+
+def timesNet_config(trial: optuna.trial.Trial):
+    callbacks = create_callbacks(early_stop_patience=5, model_name='TimesNet')
+    config = {
+        'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+        'hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
+        'dropout': trial.suggest_float('dropout', 0.0, 0.5),
+        'conv_hidden_size': trial.suggest_categorical('conv_hidden_size', [16, 32, 64, 128]),
+        'top_k': trial.suggest_int('top_k', 3, 7),
+        'num_kernels': trial.suggest_int('num_kernels', 4, 8),
+        'encoder_layers': trial.suggest_int('encoder_layers', 1, 4),
+        'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
+        'optimizer': torch.optim.Adadelta,
+        'optimizer_kwargs': {
+            'rho': 0.75,
+            'lr': 1e-3,  # learning_rate burada
+        },
+        'lr_scheduler': torch.optim.lr_scheduler.CosineAnnealingLR,
+        'lr_scheduler_kwargs': {
+            'T_max' : 10
+        },
+        # Lightning Trainer ayarları
+        'max_steps': 1000,
+        'val_check_steps': 10,
+        'early_stop_patience_steps': 5,
+        'scaler_type': 'standard',
+        'random_seed': 26,
+        'val_check_steps': 10,            # Her  step'te validation
+        'max_steps': 1000,               # Maksimum eğitim step sayısı
+        'callbacks': callbacks,
+        'accelerator': 'auto',        # GPU varsa kullan
+        'enable_progress_bar': True, # Progress bar kapat (gym için)
+        'enable_model_summary': True,
+        'logger': get_logger(name='TimesNet'),
+        'enable_checkpointing': True,
+        'enable_progress_bar': True
+    }
+    return config
+
+def GRU_config(trial: optuna.trial.Trial):
+    config = {
+        'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+        'encoder_hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
+        'encoder_n_layers': trial.suggest_int('encoder_n_layers', 1, 3),
+        'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
+        'optimizer': torch.optim.Adadelta,
+        'optimizer_kwargs': {
+            'rho': 0.75,
+            'lr': 1e-3,  
+        },
+        'lr_scheduler': torch.optim.lr_scheduler.CosineAnnealingLR,
+        'lr_scheduler_kwargs': {
+            'T_max' : 10
+        },
+        # Lightning Trainer ayarları
+        'max_steps': 1000,
+        'val_check_steps': 10,
+        'early_stop_patience_steps': 5,
+        'scaler_type': 'standard',
+        'random_seed': 26,
+        'enable_progress_bar': True,
+        'enable_model_summary': True,
+        'logger': get_logger(name='GRU'),
+        'enable_checkpointing': True,
+        'callbacks': create_callbacks(early_stop_patience=5, model_name='GRU'),
+        'accelerator': 'auto',
+    }
+    return config
+
+def LSTM_config(trial: optuna.trial.Trial):
+    config = {
+        'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+        'encoder_hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
+        'encoder_n_layers': trial.suggest_int('encoder_n_layers', 1, 3),
+        'decoder_hidden_size': trial.suggest_categorical('decoder_hidden_size', [32, 64, 128, 256]),
+        'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
+        'optimizer': torch.optim.Adadelta,
+        'optimizer_kwargs': {
+            'rho': 0.75,
+            'lr': 1e-3,  # learning_rate burada
+        },
+        'lr_scheduler': torch.optim.lr_scheduler.CosineAnnealingLR,
+        'lr_scheduler_kwargs': {
+            'T_max' : 10
+        },
+        # Lightning Trainer ayarları
+        'max_steps': 1000,
+        'val_check_steps': 10,
+        'early_stop_patience_steps': 5,
+        'scaler_type': 'standard',
+        'random_seed': 26,
+        'enable_progress_bar': True,
+        'enable_model_summary': True,
+        'logger': get_logger(name='LSTM'),
+        'enable_checkpointing': True,
+        'callbacks': create_callbacks(early_stop_patience=5, model_name='LSTM'),
+        'accelerator': 'auto'
+    }
+    return config
+
+def KAN_config(trial: optuna.trial.Trial):
+    config = {
+        'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+        'hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
+        'grid_size': trial.suggest_categorical('grid_size', [5, 10, 15, 20]),
+        'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
+        'spline_order': trial.suggest_categorical('spline_order', [2, 3, 4]),
+        'scaler_type': trial.suggest_categorical('scaler_type', ['standard', 'minmax','robust']),
+        'optimizer': torch.optim.Adadelta,
+        'optimizer_kwargs': {
+            'rho': 0.75,
+            'lr': 1e-3,  # learning_rate burada
+        },
+        'lr_scheduler': torch.optim.lr_scheduler.CosineAnnealingLR,
+        'lr_scheduler_kwargs': {
+            'T_max' : 10
+        },
+        # Lightning Trainer ayarları
+        'max_steps': 1000,
+        'val_check_steps': 10,
+        'early_stop_patience_steps': 5,
+        'scaler_type': 'standard',
+        'random_seed': 26,
+        'enable_progress_bar': True,
+        'enable_model_summary': True,
+        'logger': get_logger(name='KAN'),
+        'enable_checkpointing': True,
+        'callbacks': create_callbacks(early_stop_patience=5, model_name='KAN'),
+        'accelerator': 'auto'
+    }
+    return config
+
+def VanillaTransformer_config(trial: optuna.trial.Trial):
+    config = {
+        'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+        'n_head': trial.suggest_categorical('nhead', [2, 4, 8]),
+        'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
+        'windows_batch_size': trial.suggest_categorical('windows_batch_size', [8, 16, 32]),
+        'scaler_type': trial.suggest_categorical('scaler_type', ['standard', 'minmax','robust']),
+        'optimizer': torch.optim.Adadelta,
+        'optimizer_kwargs': {
+            'rho': 0.75,
+            'lr': 1e-3,  # learning_rate burada
+        },
+        'lr_scheduler': torch.optim.lr_scheduler.CosineAnnealingLR,
+        'lr_scheduler_kwargs': {
+            'T_max' : 10
+        },
+        # Lightning Trainer ayarları
+        'max_steps': 1000,
+        'val_check_steps': 10,
+        'early_stop_patience_steps': 5,
+        'scaler_type': 'standard',
+        'random_seed': 26,
+        'enable_progress_bar': True,
+        'enable_model_summary': True,       
+        'logger': get_logger(name='VanillaTransformer'),
+        'enable_checkpointing': True,
+        'callbacks': create_callbacks(early_stop_patience=5, model_name='VanillaTransformer'),
+        'accelerator': 'auto',
+    }
+    return config
+
+
+# Configuration
+def get_auto_model_config(  
+                          n_trials, 
+                          model_name: str = 'TimesNet',
+                          horizon:int = 20,
+                          
+) -> dict:
+    model_config = None
+    if model_name == 'TimesNet':
+        model_config = timesNet_config
+    elif model_name == 'VanillaTransformer':
+        model_config = VanillaTransformer_config
+    elif model_name == 'GRU':
+        model_config = GRU_config
+    elif model_name == 'LSTM':
+        model_config = LSTM_config
+    elif model_name == 'KAN':
+        model_config = KAN_config
+    return {
+        'h': horizon,
+        'backend' : 'optuna',
+        'loss': MSE(),                    # Loss function
+        'valid_loss': MSE(),              # Validation loss
+        'num_samples': n_trials,     # Optuna trial sayısı
+        'config': model_config   # Model yapılandırması
+    }

@@ -1,0 +1,1444 @@
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,345][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'dropout': 0.4319977919883434, 'conv_hidden_size': 16, 'top_k': 5, 'num_kernels': 8, 'encoder_layers': 3, 'batch_size': 32, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/timesnet.py", line 216, in __init__
+    super(TimesNet, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,346][0m Trial 0 failed with value None.[0m
+Error training TimesNet: max_epochs is deprecated, use max_steps instead.
+Step: 0 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-15 23:44:10,373][0m A new study created in memory with name: no-name-eeff7ccf-7e98-48ee-ba95-df16430819a8[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,375][0m Trial 0 failed with parameters: {'input_size': 96, 'd_model': 32, 'nhead': 2, 'num_encoder_layers': 4, 'num_decoder_layers': 2, 'dim_feedforward': 128, 'dropout': 0.3873031459130725, 'batch_size': 32, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/vanillatransformer.py", line 135, in __init__
+    super(VanillaTransformer, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,376][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: max_epochs is deprecated, use max_steps instead.
+Step: 1 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-15 23:44:10,396][0m A new study created in memory with name: no-name-e5cfaa58-648a-4e44-ade1-01a836e918a1[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,398][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'num_layers': 2, 'dropout': 0.14493910751499334, 'batch_size': 16, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/gru.py", line 130, in __init__
+    super(GRU, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,399][0m Trial 0 failed with value None.[0m
+Error training GRU: max_epochs is deprecated, use max_steps instead.
+Step: 2 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-15 23:44:10,416][0m A new study created in memory with name: no-name-c9a64845-6c53-491e-b88f-13df1fef21ee[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,418][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 256, 'num_layers': 3, 'dropout': 0.09049907436943877, 'batch_size': 16, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/lstm.py", line 124, in __init__
+    super(LSTM, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,419][0m Trial 0 failed with value None.[0m
+Error training LSTM: max_epochs is deprecated, use max_steps instead.
+Step: 3 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-15 23:44:10,436][0m A new study created in memory with name: no-name-bedfea1a-0a31-45a0-ba85-d6eaff22c0a1[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,438][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'num_layers': 3, 'dropout': 0.4476965845889625, 'batch_size': 16, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/kan.py", line 347, in __init__
+    super(KAN, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,439][0m Trial 0 failed with value None.[0m
+Error training KAN: max_epochs is deprecated, use max_steps instead.
+Step: 4 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-15 23:44:10,453][0m A new study created in memory with name: no-name-7ceec6fa-dddd-4c3e-89f4-e08b3b2167ca[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,456][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 64, 'dropout': 0.47327417234549907, 'conv_hidden_size': 128, 'top_k': 3, 'num_kernels': 7, 'encoder_layers': 1, 'batch_size': 16, 'windows_batch_size': 1024} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/timesnet.py", line 216, in __init__
+    super(TimesNet, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,456][0m Trial 0 failed with value None.[0m
+Error training TimesNet: max_epochs is deprecated, use max_steps instead.
+Step: 5 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-15 23:44:10,472][0m A new study created in memory with name: no-name-ca554588-a91a-41e5-a836-3a56e6f8b339[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,474][0m Trial 0 failed with parameters: {'input_size': 48, 'd_model': 32, 'nhead': 4, 'num_encoder_layers': 3, 'num_decoder_layers': 3, 'dim_feedforward': 64, 'dropout': 0.13690078759280977, 'batch_size': 64, 'windows_batch_size': 256} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/vanillatransformer.py", line 135, in __init__
+    super(VanillaTransformer, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,475][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: max_epochs is deprecated, use max_steps instead.
+Step: 6 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-15 23:44:10,492][0m A new study created in memory with name: no-name-ee4df654-2641-4726-8c65-9f1b1bdb54ed[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,494][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 128, 'num_layers': 3, 'dropout': 0.4069166534160744, 'batch_size': 128, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/gru.py", line 130, in __init__
+    super(GRU, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,494][0m Trial 0 failed with value None.[0m
+Error training GRU: max_epochs is deprecated, use max_steps instead.
+Step: 7 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-15 23:44:10,513][0m A new study created in memory with name: no-name-85177ad7-d022-4a35-a9fb-ef02ed6ffb9f[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,515][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'num_layers': 2, 'dropout': 0.41831163173429525, 'batch_size': 16, 'windows_batch_size': 1024} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/lstm.py", line 124, in __init__
+    super(LSTM, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,516][0m Trial 0 failed with value None.[0m
+Error training LSTM: max_epochs is deprecated, use max_steps instead.
+Step: 8 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-15 23:44:10,533][0m A new study created in memory with name: no-name-6634aa71-264b-426c-9792-1833595794e7[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,536][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 32, 'num_layers': 2, 'dropout': 0.16110037714138603, 'batch_size': 128, 'windows_batch_size': 256} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/kan.py", line 347, in __init__
+    super(KAN, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,536][0m Trial 0 failed with value None.[0m
+Error training KAN: max_epochs is deprecated, use max_steps instead.
+Step: 9 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 2/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-15 23:44:10,556][0m A new study created in memory with name: no-name-cf656fb4-66e8-43a7-9bb1-4cbe83e84cbc[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,558][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 128, 'dropout': 0.37598492850230303, 'conv_hidden_size': 128, 'top_k': 5, 'num_kernels': 4, 'encoder_layers': 2, 'batch_size': 128, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/timesnet.py", line 216, in __init__
+    super(TimesNet, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,559][0m Trial 0 failed with value None.[0m
+Error training TimesNet: max_epochs is deprecated, use max_steps instead.
+Step: 10 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-15 23:44:10,577][0m A new study created in memory with name: no-name-5913a7c9-6570-4ba9-8fb9-4a207be13ccb[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,580][0m Trial 0 failed with parameters: {'input_size': 72, 'd_model': 32, 'nhead': 8, 'num_encoder_layers': 4, 'num_decoder_layers': 3, 'dim_feedforward': 64, 'dropout': 0.2358326136528901, 'batch_size': 16, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/vanillatransformer.py", line 135, in __init__
+    super(VanillaTransformer, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,580][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: max_epochs is deprecated, use max_steps instead.
+Step: 11 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-15 23:44:10,597][0m A new study created in memory with name: no-name-92e351d4-765e-48a8-89f1-fa56dec37be9[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,600][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 32, 'num_layers': 2, 'dropout': 0.3253268643970222, 'batch_size': 16, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/gru.py", line 130, in __init__
+    super(GRU, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,601][0m Trial 0 failed with value None.[0m
+Error training GRU: max_epochs is deprecated, use max_steps instead.
+Step: 12 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-15 23:44:10,617][0m A new study created in memory with name: no-name-7b6daed1-7513-41e0-a142-3da1448217b5[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,621][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 64, 'num_layers': 3, 'dropout': 0.37037806692929315, 'batch_size': 16, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/lstm.py", line 124, in __init__
+    super(LSTM, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,621][0m Trial 0 failed with value None.[0m
+Error training LSTM: max_epochs is deprecated, use max_steps instead.
+Step: 13 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-15 23:44:10,640][0m A new study created in memory with name: no-name-784fb7f4-8348-480d-bba6-04a214486b45[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,643][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 128, 'num_layers': 1, 'dropout': 0.3627346740841889, 'batch_size': 128, 'windows_batch_size': 1024} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/kan.py", line 347, in __init__
+    super(KAN, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,644][0m Trial 0 failed with value None.[0m
+Error training KAN: max_epochs is deprecated, use max_steps instead.
+Step: 14 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-15 23:44:10,660][0m A new study created in memory with name: no-name-42eb53ee-dc2f-45e0-8221-d1e2831d24ab[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,663][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 256, 'dropout': 0.27407723819047897, 'conv_hidden_size': 128, 'top_k': 6, 'num_kernels': 7, 'encoder_layers': 1, 'batch_size': 16, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/timesnet.py", line 216, in __init__
+    super(TimesNet, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,663][0m Trial 0 failed with value None.[0m
+Error training TimesNet: max_epochs is deprecated, use max_steps instead.
+Step: 15 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-15 23:44:10,678][0m A new study created in memory with name: no-name-26d27c03-ddba-467e-bd01-fe4593b2ee2d[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,680][0m Trial 0 failed with parameters: {'input_size': 48, 'd_model': 256, 'nhead': 4, 'num_encoder_layers': 1, 'num_decoder_layers': 3, 'dim_feedforward': 64, 'dropout': 0.20885903624594182, 'batch_size': 64, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/vanillatransformer.py", line 135, in __init__
+    super(VanillaTransformer, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,680][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: max_epochs is deprecated, use max_steps instead.
+Step: 16 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-15 23:44:10,694][0m A new study created in memory with name: no-name-bcc7360d-c7bf-4f36-8525-1234324ae432[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,697][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'num_layers': 2, 'dropout': 0.3201200836942946, 'batch_size': 64, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/gru.py", line 130, in __init__
+    super(GRU, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,697][0m Trial 0 failed with value None.[0m
+Error training GRU: max_epochs is deprecated, use max_steps instead.
+Step: 17 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-15 23:44:10,711][0m A new study created in memory with name: no-name-d107153b-ad91-4c37-86f3-4268ef7ad233[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,713][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 64, 'num_layers': 2, 'dropout': 0.11408425859585425, 'batch_size': 32, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/lstm.py", line 124, in __init__
+    super(LSTM, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,714][0m Trial 0 failed with value None.[0m
+Error training LSTM: max_epochs is deprecated, use max_steps instead.
+Step: 18 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-15 23:44:10,730][0m A new study created in memory with name: no-name-e213800b-e151-434d-a2ba-9e7888c1ebf7[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,733][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 256, 'num_layers': 3, 'dropout': 0.4213959919116518, 'batch_size': 128, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/kan.py", line 347, in __init__
+    super(KAN, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,733][0m Trial 0 failed with value None.[0m
+Error training KAN: max_epochs is deprecated, use max_steps instead.
+Step: 19 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 3/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-15 23:44:10,748][0m A new study created in memory with name: no-name-b34eb3d5-4d34-4033-89be-2f57dc2474f5[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,751][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 256, 'dropout': 0.2253292769122624, 'conv_hidden_size': 16, 'top_k': 7, 'num_kernels': 7, 'encoder_layers': 3, 'batch_size': 16, 'windows_batch_size': 1024} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/timesnet.py", line 216, in __init__
+    super(TimesNet, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,751][0m Trial 0 failed with value None.[0m
+Error training TimesNet: max_epochs is deprecated, use max_steps instead.
+Step: 20 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-15 23:44:10,767][0m A new study created in memory with name: no-name-33dfc293-1edc-46f1-bf9f-3b3421762c93[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,769][0m Trial 0 failed with parameters: {'input_size': 96, 'd_model': 32, 'nhead': 4, 'num_encoder_layers': 3, 'num_decoder_layers': 4, 'dim_feedforward': 128, 'dropout': 0.23926036349111696, 'batch_size': 32, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/vanillatransformer.py", line 135, in __init__
+    super(VanillaTransformer, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,769][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: max_epochs is deprecated, use max_steps instead.
+Step: 21 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-15 23:44:10,783][0m A new study created in memory with name: no-name-4c3afa81-b9ed-413b-8f95-3197dc065d49[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,786][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 128, 'num_layers': 3, 'dropout': 0.15511717245640366, 'batch_size': 32, 'windows_batch_size': 256} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/gru.py", line 130, in __init__
+    super(GRU, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,786][0m Trial 0 failed with value None.[0m
+Error training GRU: max_epochs is deprecated, use max_steps instead.
+Step: 22 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-15 23:44:10,802][0m A new study created in memory with name: no-name-07850c28-2eab-4f18-b966-579a2f3d9087[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,805][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 128, 'num_layers': 2, 'dropout': 0.29208886820299096, 'batch_size': 32, 'windows_batch_size': 1024} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/lstm.py", line 124, in __init__
+    super(LSTM, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,806][0m Trial 0 failed with value None.[0m
+Error training LSTM: max_epochs is deprecated, use max_steps instead.
+Step: 23 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-15 23:44:10,820][0m A new study created in memory with name: no-name-0502920e-baad-4f37-aba9-9022bf614feb[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,822][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'num_layers': 1, 'dropout': 0.3464362900483938, 'batch_size': 32, 'windows_batch_size': 256} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/kan.py", line 347, in __init__
+    super(KAN, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,822][0m Trial 0 failed with value None.[0m
+Error training KAN: max_epochs is deprecated, use max_steps instead.
+Step: 24 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-15 23:44:10,839][0m A new study created in memory with name: no-name-c7f1f6d9-97a4-409c-95a9-aef822ea8dc4[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,841][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'dropout': 0.25761298620419937, 'conv_hidden_size': 16, 'top_k': 4, 'num_kernels': 6, 'encoder_layers': 3, 'batch_size': 32, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/timesnet.py", line 216, in __init__
+    super(TimesNet, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,841][0m Trial 0 failed with value None.[0m
+Error training TimesNet: max_epochs is deprecated, use max_steps instead.
+Step: 25 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-15 23:44:10,855][0m A new study created in memory with name: no-name-f83fc874-684c-4368-9567-19ae74341bf8[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,858][0m Trial 0 failed with parameters: {'input_size': 96, 'd_model': 32, 'nhead': 2, 'num_encoder_layers': 2, 'num_decoder_layers': 1, 'dim_feedforward': 128, 'dropout': 0.3013723227465064, 'batch_size': 16, 'windows_batch_size': 1024} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/vanillatransformer.py", line 135, in __init__
+    super(VanillaTransformer, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,858][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: max_epochs is deprecated, use max_steps instead.
+Step: 26 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-15 23:44:10,874][0m A new study created in memory with name: no-name-5be3b55d-ee99-4ab7-83f8-2f9bdbaa256a[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,876][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'num_layers': 1, 'dropout': 0.1346080657704284, 'batch_size': 128, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/gru.py", line 130, in __init__
+    super(GRU, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,877][0m Trial 0 failed with value None.[0m
+Error training GRU: max_epochs is deprecated, use max_steps instead.
+Step: 27 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-15 23:44:10,890][0m A new study created in memory with name: no-name-44f39c0a-095f-4464-8379-18739dc7d661[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,893][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 64, 'num_layers': 2, 'dropout': 0.4309295997975548, 'batch_size': 64, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/lstm.py", line 124, in __init__
+    super(LSTM, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,893][0m Trial 0 failed with value None.[0m
+Error training LSTM: max_epochs is deprecated, use max_steps instead.
+Step: 28 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-15 23:44:10,910][0m A new study created in memory with name: no-name-b1afaa41-64af-46b4-8273-77be1fa4a685[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,912][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 32, 'num_layers': 2, 'dropout': 0.27835382298622935, 'batch_size': 128, 'windows_batch_size': 1024} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/kan.py", line 347, in __init__
+    super(KAN, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,912][0m Trial 0 failed with value None.[0m
+Error training KAN: max_epochs is deprecated, use max_steps instead.
+Step: 29 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 4/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-15 23:44:10,927][0m A new study created in memory with name: no-name-457813d3-3af1-476e-b014-1e5401e682d7[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,930][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 128, 'dropout': 0.2692154975855997, 'conv_hidden_size': 16, 'top_k': 4, 'num_kernels': 5, 'encoder_layers': 4, 'batch_size': 128, 'windows_batch_size': 256} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/timesnet.py", line 216, in __init__
+    super(TimesNet, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,930][0m Trial 0 failed with value None.[0m
+Error training TimesNet: max_epochs is deprecated, use max_steps instead.
+Step: 30 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-15 23:44:10,947][0m A new study created in memory with name: no-name-c64d4a09-bdd1-4eb4-b703-44a54529da4e[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,949][0m Trial 0 failed with parameters: {'input_size': 48, 'd_model': 128, 'nhead': 8, 'num_encoder_layers': 2, 'num_decoder_layers': 4, 'dim_feedforward': 128, 'dropout': 0.3073001901409697, 'batch_size': 32, 'windows_batch_size': 1024} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/vanillatransformer.py", line 135, in __init__
+    super(VanillaTransformer, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,950][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: max_epochs is deprecated, use max_steps instead.
+Step: 31 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-15 23:44:10,965][0m A new study created in memory with name: no-name-3c7913b5-e9c5-411f-aaf3-0ab7c6b2c1eb[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,967][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 128, 'num_layers': 1, 'dropout': 0.1633520801489819, 'batch_size': 32, 'windows_batch_size': 256} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/gru.py", line 130, in __init__
+    super(GRU, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,968][0m Trial 0 failed with value None.[0m
+Error training GRU: max_epochs is deprecated, use max_steps instead.
+Step: 32 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-15 23:44:10,983][0m A new study created in memory with name: no-name-0aef3564-c3ae-43f7-88a1-bec2a0ed2a94[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:10,985][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 64, 'num_layers': 3, 'dropout': 0.06854465078486555, 'batch_size': 16, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/lstm.py", line 124, in __init__
+    super(LSTM, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:10,986][0m Trial 0 failed with value None.[0m
+Error training LSTM: max_epochs is deprecated, use max_steps instead.
+Step: 33 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-15 23:44:11,000][0m A new study created in memory with name: no-name-b1e3fcb5-b0d4-41b4-9a48-385f9e5957be[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,002][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 128, 'num_layers': 1, 'dropout': 0.2018999138594323, 'batch_size': 32, 'windows_batch_size': 256} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/kan.py", line 347, in __init__
+    super(KAN, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,003][0m Trial 0 failed with value None.[0m
+Error training KAN: max_epochs is deprecated, use max_steps instead.
+Step: 34 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-15 23:44:11,016][0m A new study created in memory with name: no-name-8647a513-266c-4bba-85b6-629dda90d9b1[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,018][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 32, 'dropout': 0.2291645847400542, 'conv_hidden_size': 32, 'top_k': 3, 'num_kernels': 6, 'encoder_layers': 4, 'batch_size': 32, 'windows_batch_size': 1024} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/timesnet.py", line 216, in __init__
+    super(TimesNet, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,019][0m Trial 0 failed with value None.[0m
+Error training TimesNet: max_epochs is deprecated, use max_steps instead.
+Step: 35 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-15 23:44:11,033][0m A new study created in memory with name: no-name-8f8a4e92-4a48-460a-8965-b9312ad6026c[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,035][0m Trial 0 failed with parameters: {'input_size': 48, 'd_model': 64, 'nhead': 4, 'num_encoder_layers': 2, 'num_decoder_layers': 3, 'dim_feedforward': 128, 'dropout': 0.21072525447383122, 'batch_size': 64, 'windows_batch_size': 1024} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/vanillatransformer.py", line 135, in __init__
+    super(VanillaTransformer, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,035][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: max_epochs is deprecated, use max_steps instead.
+Step: 36 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-15 23:44:11,052][0m A new study created in memory with name: no-name-5a0f2946-1383-4ef4-9356-d5e17c5d2848[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,055][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 64, 'num_layers': 1, 'dropout': 0.1482078467713998, 'batch_size': 128, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/gru.py", line 130, in __init__
+    super(GRU, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,055][0m Trial 0 failed with value None.[0m
+Error training GRU: max_epochs is deprecated, use max_steps instead.
+Step: 37 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-15 23:44:11,084][0m A new study created in memory with name: no-name-5efe3e99-8245-4b8e-9b42-dc1c0a8cf7ce[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,101][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'num_layers': 1, 'dropout': 0.20380787508621084, 'batch_size': 16, 'windows_batch_size': 256} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/lstm.py", line 124, in __init__
+    super(LSTM, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,102][0m Trial 0 failed with value None.[0m
+Error training LSTM: max_epochs is deprecated, use max_steps instead.
+Step: 38 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-15 23:44:11,128][0m A new study created in memory with name: no-name-e9db330e-d14a-444a-a9cf-4b67aee498fc[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,131][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'num_layers': 2, 'dropout': 0.37910248299499766, 'batch_size': 32, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/kan.py", line 347, in __init__
+    super(KAN, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,131][0m Trial 0 failed with value None.[0m
+Error training KAN: max_epochs is deprecated, use max_steps instead.
+Step: 39 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 5/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-15 23:44:11,149][0m A new study created in memory with name: no-name-040edc89-5219-495e-8b64-b4761831c9fa[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,151][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 64, 'dropout': 0.07965976925178098, 'conv_hidden_size': 64, 'top_k': 3, 'num_kernels': 6, 'encoder_layers': 1, 'batch_size': 16, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/timesnet.py", line 216, in __init__
+    super(TimesNet, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,151][0m Trial 0 failed with value None.[0m
+Error training TimesNet: max_epochs is deprecated, use max_steps instead.
+Step: 40 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-15 23:44:11,167][0m A new study created in memory with name: no-name-d46552b5-79f3-403e-b73f-8652db3f3823[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,170][0m Trial 0 failed with parameters: {'input_size': 96, 'd_model': 256, 'nhead': 8, 'num_encoder_layers': 2, 'num_decoder_layers': 2, 'dim_feedforward': 128, 'dropout': 0.4933911556366835, 'batch_size': 32, 'windows_batch_size': 256} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/vanillatransformer.py", line 135, in __init__
+    super(VanillaTransformer, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,170][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: max_epochs is deprecated, use max_steps instead.
+Step: 41 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-15 23:44:11,189][0m A new study created in memory with name: no-name-c5634e91-3d3d-4f0a-8351-10f5a51881d9[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,192][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 128, 'num_layers': 2, 'dropout': 0.07039478978271863, 'batch_size': 16, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/gru.py", line 130, in __init__
+    super(GRU, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,192][0m Trial 0 failed with value None.[0m
+Error training GRU: max_epochs is deprecated, use max_steps instead.
+Step: 42 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-15 23:44:11,208][0m A new study created in memory with name: no-name-23575e96-1e42-4ab2-a3ba-1192c7bcb020[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,211][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'num_layers': 2, 'dropout': 0.06998872712497178, 'batch_size': 128, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/lstm.py", line 124, in __init__
+    super(LSTM, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,211][0m Trial 0 failed with value None.[0m
+Error training LSTM: max_epochs is deprecated, use max_steps instead.
+Step: 43 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-15 23:44:11,226][0m A new study created in memory with name: no-name-77f6e656-5dae-4692-bf37-095cc666c1e8[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,228][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 32, 'num_layers': 2, 'dropout': 0.13856872266930087, 'batch_size': 64, 'windows_batch_size': 512} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/kan.py", line 347, in __init__
+    super(KAN, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,229][0m Trial 0 failed with value None.[0m
+Error training KAN: max_epochs is deprecated, use max_steps instead.
+Step: 44 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-15 23:44:11,243][0m A new study created in memory with name: no-name-80303dae-7e85-4b7c-b65e-e8cf5a65f11d[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,246][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 64, 'dropout': 0.32394871902151684, 'conv_hidden_size': 32, 'top_k': 3, 'num_kernels': 8, 'encoder_layers': 2, 'batch_size': 32, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/timesnet.py", line 216, in __init__
+    super(TimesNet, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,246][0m Trial 0 failed with value None.[0m
+Error training TimesNet: max_epochs is deprecated, use max_steps instead.
+Step: 45 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-15 23:44:11,261][0m A new study created in memory with name: no-name-9a529865-d8e3-4bd9-b3ce-61307af11759[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,263][0m Trial 0 failed with parameters: {'input_size': 72, 'd_model': 128, 'nhead': 2, 'num_encoder_layers': 1, 'num_decoder_layers': 3, 'dim_feedforward': 512, 'dropout': 0.14490150498959342, 'batch_size': 16, 'windows_batch_size': 256} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/vanillatransformer.py", line 135, in __init__
+    super(VanillaTransformer, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,263][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: max_epochs is deprecated, use max_steps instead.
+Step: 46 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-15 23:44:11,284][0m A new study created in memory with name: no-name-2e67e4a5-5d06-4026-bb0a-088b907b3427[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,286][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 128, 'num_layers': 1, 'dropout': 0.08625530168919382, 'batch_size': 64, 'windows_batch_size': 1024} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/gru.py", line 130, in __init__
+    super(GRU, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,286][0m Trial 0 failed with value None.[0m
+Error training GRU: max_epochs is deprecated, use max_steps instead.
+Step: 47 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-15 23:44:11,302][0m A new study created in memory with name: no-name-57428edb-7f79-4f5c-9e21-52d86f40742e[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,304][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 32, 'num_layers': 2, 'dropout': 0.24088670956129504, 'batch_size': 64, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/lstm.py", line 124, in __init__
+    super(LSTM, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,304][0m Trial 0 failed with value None.[0m
+Error training LSTM: max_epochs is deprecated, use max_steps instead.
+Step: 48 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-15 23:44:11,320][0m A new study created in memory with name: no-name-1a17a76f-5af2-4709-9600-dab1768aecb3[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-15 23:44:11,322][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 128, 'num_layers': 1, 'dropout': 0.12804971699170464, 'batch_size': 32, 'windows_batch_size': 128} because of the following error: Exception('max_epochs is deprecated, use max_steps instead.').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 346, in _fit_model
+    model = cls_model(**config)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/models/kan.py", line 347, in __init__
+    super(KAN, self).__init__(
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 294, in __init__
+    raise Exception("max_epochs is deprecated, use max_steps instead.")
+Exception: max_epochs is deprecated, use max_steps instead.
+[33m[W 2026-01-15 23:44:11,323][0m Trial 0 failed with value None.[0m
+Error training KAN: max_epochs is deprecated, use max_steps instead.
+Step: 49 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+======================================================================
+STATISTICS
+======================================================================
+Total Steps: 50
+Best Action: 0 (TimesNet)
+Action Counts: [10.0, 10.0, 10.0, 10.0, 10.0]
+Mean Rewards: ['-1.000000', '-1.000000', '-1.000000', '-1.000000', '-1.000000']
+Total Rewards: ['-10.000000', '-10.000000', '-10.000000', '-10.000000', '-10.000000']
+======================================================================
+
+✓ Agent saved: outputs/run_20260115_234408/agent.json
+
+======================================================================
+Training ended at 2026-01-15 23:44:11
+All outputs saved to: outputs/run_20260115_234408
+======================================================================
+Eğitim tamamlandı.

@@ -1,0 +1,11 @@
+{"time":"2026-01-16T00:15:01.40778047Z","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-01-16T00:15:01.73773397Z","level":"INFO","msg":"stream: created new stream","id":"gxmbngzt"}
+{"time":"2026-01-16T00:15:01.73809497Z","level":"INFO","msg":"handler: started","stream_id":"gxmbngzt"}
+{"time":"2026-01-16T00:15:01.739417678Z","level":"INFO","msg":"stream: started","id":"gxmbngzt"}
+{"time":"2026-01-16T00:15:01.73949672Z","level":"INFO","msg":"writer: started","stream_id":"gxmbngzt"}
+{"time":"2026-01-16T00:15:01.73962672Z","level":"INFO","msg":"sender: started","stream_id":"gxmbngzt"}
+{"time":"2026-01-16T00:15:04.729262513Z","level":"INFO","msg":"stream: closing","id":"gxmbngzt"}
+{"time":"2026-01-16T00:15:05.732210472Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-01-16T00:15:06.315632139Z","level":"INFO","msg":"handler: closed","stream_id":"gxmbngzt"}
+{"time":"2026-01-16T00:15:06.316255472Z","level":"INFO","msg":"sender: closed","stream_id":"gxmbngzt"}
+{"time":"2026-01-16T00:15:06.316513722Z","level":"INFO","msg":"stream: closed","id":"gxmbngzt"}

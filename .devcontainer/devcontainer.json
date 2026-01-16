@@ -10,5 +10,5 @@
         }
     },
 
-    "postCreateCommand": "apt-get update && apt-get install -y git &&  pip install pandas numpy matplotlib scikit-learn jupyterlab seaborn plotly openpyxl neuralforecast gymnasium"
+    "postCreateCommand": "apt-get update && apt-get install -y git &&  pip install pandas numpy matplotlib scikit-learn jupyterlab seaborn plotly openpyxl neuralforecast gymnasium lightning wandb && bash ./wandb_conf.sh"
 }

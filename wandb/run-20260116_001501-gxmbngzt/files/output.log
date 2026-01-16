@@ -1,0 +1,2414 @@
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:02,996][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 256, 'dropout': 0.4911277629827903, 'conv_hidden_size': 128, 'top_k': 7, 'num_kernels': 7, 'encoder_layers': 2, 'batch_size': 32} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:02,997][0m Trial 0 failed with value None.[0m
+Error training TimesNet: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 0 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:15:03,019][0m A new study created in memory with name: no-name-91fbf3af-3422-4686-a87c-772598f1de6c[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:03,028][0m Trial 0 failed with parameters: {'input_size': 96, 'nhead': 8, 'num_encoder_layers': 1, 'num_decoder_layers': 1, 'batch_size': 32, 'scaler_type': 'minmax'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:15:03,029][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 1 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:15:03,050][0m A new study created in memory with name: no-name-605f06f9-21a6-4925-97e3-915273069d42[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:03,054][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 256, 'num_layers': 1, 'batch_size': 32} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:15:03,055][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 2 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:15:03,072][0m A new study created in memory with name: no-name-335e33a7-3af1-402f-8e55-a2678f805f00[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,080][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'encoder_n_layers': 1, 'decoder_hidden_size': 32, 'batch_size': 64} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,081][0m Trial 0 failed with value None.[0m
+Error training LSTM: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 3 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:15:03,097][0m A new study created in memory with name: no-name-0f79a34f-929a-4ddb-8dc4-24bd96f32c54[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,114][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 64, 'grid_size': 15, 'batch_size': 32, 'spline_order': 4, 'scaler_type': 'standard'} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,115][0m Trial 0 failed with value None.[0m
+Error training KAN: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 4 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:15:03,132][0m A new study created in memory with name: no-name-77d5728e-b960-48a3-be84-b4939ac79009[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,157][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 128, 'dropout': 0.4942715959402377, 'conv_hidden_size': 16, 'top_k': 5, 'num_kernels': 6, 'encoder_layers': 2, 'batch_size': 32} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,158][0m Trial 0 failed with value None.[0m
+Error training TimesNet: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 5 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:15:03,176][0m A new study created in memory with name: no-name-83cc174b-601a-4c29-8719-a84f50a29947[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:03,185][0m Trial 0 failed with parameters: {'input_size': 48, 'nhead': 2, 'num_encoder_layers': 1, 'num_decoder_layers': 2, 'batch_size': 64, 'scaler_type': 'robust'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:15:03,185][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 6 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:15:03,202][0m A new study created in memory with name: no-name-3a9efaf3-87e0-4ccc-b25a-129e70203c04[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:03,205][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 128, 'num_layers': 2, 'batch_size': 32} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:15:03,205][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 7 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:15:03,221][0m A new study created in memory with name: no-name-59fa77fc-7f6f-4f94-bab3-dbefc5e58509[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,228][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 64, 'encoder_n_layers': 3, 'decoder_hidden_size': 128, 'batch_size': 32} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,229][0m Trial 0 failed with value None.[0m
+Error training LSTM: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 8 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:15:03,246][0m A new study created in memory with name: no-name-17a72477-d035-48f7-b05a-4cd30857bef0[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,268][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'grid_size': 5, 'batch_size': 32, 'spline_order': 2, 'scaler_type': 'robust'} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,269][0m Trial 0 failed with value None.[0m
+Error training KAN: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 9 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 2/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:15:03,286][0m A new study created in memory with name: no-name-a6bf7b4d-9781-4f29-abb8-4220b8edf174[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,310][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 128, 'dropout': 0.23047295081970942, 'conv_hidden_size': 16, 'top_k': 3, 'num_kernels': 5, 'encoder_layers': 3, 'batch_size': 32} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,310][0m Trial 0 failed with value None.[0m
+Error training TimesNet: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 10 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:15:03,327][0m A new study created in memory with name: no-name-e337e9c0-b103-45d8-a336-ae16fb7f7d2b[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:03,334][0m Trial 0 failed with parameters: {'input_size': 24, 'nhead': 8, 'num_encoder_layers': 2, 'num_decoder_layers': 2, 'batch_size': 128, 'scaler_type': 'minmax'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:15:03,334][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 11 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:15:03,350][0m A new study created in memory with name: no-name-35b30a4e-d39f-4a5e-a209-c927532da4a8[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:03,353][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 128, 'num_layers': 3, 'batch_size': 64} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:15:03,353][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 12 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:15:03,369][0m A new study created in memory with name: no-name-7217ede1-32b8-4485-a770-91afdce36094[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,376][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 64, 'encoder_n_layers': 1, 'decoder_hidden_size': 128, 'batch_size': 16} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,376][0m Trial 0 failed with value None.[0m
+Error training LSTM: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 13 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:15:03,394][0m A new study created in memory with name: no-name-20426c3b-47dc-4930-aeac-03f4f4ccbd9d[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,402][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 64, 'grid_size': 10, 'batch_size': 16, 'spline_order': 3, 'scaler_type': 'minmax'} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,403][0m Trial 0 failed with value None.[0m
+Error training KAN: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 14 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:15:03,419][0m A new study created in memory with name: no-name-19e5f048-e807-4f84-9261-0a9a21677c0b[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,439][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 32, 'dropout': 0.19550111900837985, 'conv_hidden_size': 128, 'top_k': 6, 'num_kernels': 4, 'encoder_layers': 2, 'batch_size': 128} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,440][0m Trial 0 failed with value None.[0m
+Error training TimesNet: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 15 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:15:03,457][0m A new study created in memory with name: no-name-7688d9bf-b974-40ea-8aa8-49e260cc371e[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:03,464][0m Trial 0 failed with parameters: {'input_size': 96, 'nhead': 4, 'num_encoder_layers': 4, 'num_decoder_layers': 2, 'batch_size': 128, 'scaler_type': 'robust'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:15:03,465][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 16 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:15:03,481][0m A new study created in memory with name: no-name-e7cbff57-1b70-466f-be96-7f266b1cd9ab[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:03,484][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 128, 'num_layers': 3, 'batch_size': 16} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:15:03,484][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 17 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:15:03,500][0m A new study created in memory with name: no-name-8fe6ff7f-eccd-4d86-81d5-3c404eece4a2[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,508][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 128, 'encoder_n_layers': 2, 'decoder_hidden_size': 256, 'batch_size': 16} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,508][0m Trial 0 failed with value None.[0m
+Error training LSTM: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 18 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:15:03,526][0m A new study created in memory with name: no-name-5d01b512-3e0c-48e1-9d3e-97262128064c[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,536][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'grid_size': 5, 'batch_size': 16, 'spline_order': 4, 'scaler_type': 'robust'} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,537][0m Trial 0 failed with value None.[0m
+Error training KAN: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 19 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 3/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:15:03,554][0m A new study created in memory with name: no-name-2e1de3fb-8f0f-4723-a6d5-1102614ab8c6[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,649][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'dropout': 0.2575156542185788, 'conv_hidden_size': 32, 'top_k': 4, 'num_kernels': 8, 'encoder_layers': 2, 'batch_size': 32} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,649][0m Trial 0 failed with value None.[0m
+Error training TimesNet: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 20 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:15:03,672][0m A new study created in memory with name: no-name-5e6230d2-411b-4c87-a1d6-8f6d6b21a07f[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:03,681][0m Trial 0 failed with parameters: {'input_size': 48, 'nhead': 2, 'num_encoder_layers': 2, 'num_decoder_layers': 3, 'batch_size': 64, 'scaler_type': 'robust'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:15:03,681][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 21 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:15:03,699][0m A new study created in memory with name: no-name-4cac6db3-0bbb-4ebc-8351-f8b23a1c8ca5[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:03,701][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'num_layers': 1, 'batch_size': 16} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:15:03,702][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 22 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:15:03,719][0m A new study created in memory with name: no-name-43d772eb-fc0c-40ca-a200-fdd554e0b2a2[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,727][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 32, 'encoder_n_layers': 1, 'decoder_hidden_size': 128, 'batch_size': 128} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,727][0m Trial 0 failed with value None.[0m
+Error training LSTM: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 23 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:15:03,747][0m A new study created in memory with name: no-name-15c89f44-4802-4fdd-b61d-03f3682b9add[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,782][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'grid_size': 5, 'batch_size': 128, 'spline_order': 2, 'scaler_type': 'standard'} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,783][0m Trial 0 failed with value None.[0m
+Error training KAN: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 24 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:15:03,802][0m A new study created in memory with name: no-name-3ceaf716-40ad-4d46-be55-86f61d9326e2[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,849][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 256, 'dropout': 0.007875385497833176, 'conv_hidden_size': 64, 'top_k': 6, 'num_kernels': 5, 'encoder_layers': 1, 'batch_size': 32} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,849][0m Trial 0 failed with value None.[0m
+Error training TimesNet: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 25 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:15:03,868][0m A new study created in memory with name: no-name-3e5d6176-e129-4b12-b44d-4190baf19b37[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:03,876][0m Trial 0 failed with parameters: {'input_size': 72, 'nhead': 2, 'num_encoder_layers': 3, 'num_decoder_layers': 4, 'batch_size': 128, 'scaler_type': 'standard'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:15:03,877][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 26 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:15:03,894][0m A new study created in memory with name: no-name-af2bd92f-3c96-4978-bef1-a3983ae9f3b0[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:03,898][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'num_layers': 2, 'batch_size': 64} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:15:03,898][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 27 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:15:03,914][0m A new study created in memory with name: no-name-1500324b-41bb-4fe0-bfb7-3143cf29cdb9[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,922][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 128, 'encoder_n_layers': 3, 'decoder_hidden_size': 64, 'batch_size': 32} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,923][0m Trial 0 failed with value None.[0m
+Error training LSTM: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 28 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:15:03,940][0m A new study created in memory with name: no-name-a9dfc18b-23fb-4b51-bec8-b7e9aad7aa10[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,950][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 64, 'grid_size': 10, 'batch_size': 128, 'spline_order': 2, 'scaler_type': 'minmax'} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,951][0m Trial 0 failed with value None.[0m
+Error training KAN: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 29 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 4/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:15:03,969][0m A new study created in memory with name: no-name-b19329ef-6b43-498d-98ae-c96dec81e467[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:03,988][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'dropout': 0.08789970670577096, 'conv_hidden_size': 16, 'top_k': 4, 'num_kernels': 8, 'encoder_layers': 1, 'batch_size': 64} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:03,989][0m Trial 0 failed with value None.[0m
+Error training TimesNet: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 30 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:15:04,006][0m A new study created in memory with name: no-name-760fa7cc-72af-4d09-8c3e-6f4283f560b4[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:04,015][0m Trial 0 failed with parameters: {'input_size': 72, 'nhead': 8, 'num_encoder_layers': 3, 'num_decoder_layers': 2, 'batch_size': 64, 'scaler_type': 'minmax'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:15:04,015][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 31 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:15:04,034][0m A new study created in memory with name: no-name-f68fe94b-bd49-4d18-a0cf-fe0b345d82ed[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:04,037][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 32, 'num_layers': 1, 'batch_size': 16} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:15:04,037][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 32 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:15:04,057][0m A new study created in memory with name: no-name-dc402e90-9452-4f1c-85fd-8d04e4dff2a0[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:04,064][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 32, 'encoder_n_layers': 2, 'decoder_hidden_size': 128, 'batch_size': 16} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:04,065][0m Trial 0 failed with value None.[0m
+Error training LSTM: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 33 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:15:04,083][0m A new study created in memory with name: no-name-f39a74f6-ab89-48e5-8500-998e2b5e229b[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:04,105][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 128, 'grid_size': 20, 'batch_size': 32, 'spline_order': 4, 'scaler_type': 'standard'} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:04,106][0m Trial 0 failed with value None.[0m
+Error training KAN: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 34 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:15:04,122][0m A new study created in memory with name: no-name-a4825d0c-2688-471c-a334-4c594cdefced[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:04,283][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 64, 'dropout': 0.13087711572610317, 'conv_hidden_size': 128, 'top_k': 6, 'num_kernels': 7, 'encoder_layers': 3, 'batch_size': 64} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:04,284][0m Trial 0 failed with value None.[0m
+Error training TimesNet: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 35 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:15:04,304][0m A new study created in memory with name: no-name-1c0a438b-fa03-44a6-baf2-e89d3abf7733[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:04,313][0m Trial 0 failed with parameters: {'input_size': 96, 'nhead': 8, 'num_encoder_layers': 2, 'num_decoder_layers': 3, 'batch_size': 16, 'scaler_type': 'minmax'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:15:04,313][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 36 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:15:04,331][0m A new study created in memory with name: no-name-b376b9ae-9307-47f6-af85-4fc6db2c2a5f[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:04,334][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 32, 'num_layers': 1, 'batch_size': 16} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:15:04,334][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 37 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:15:04,352][0m A new study created in memory with name: no-name-0ddebeb2-f71b-49f8-a7ef-20282f013f7a[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:04,361][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 256, 'encoder_n_layers': 2, 'decoder_hidden_size': 256, 'batch_size': 64} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:04,361][0m Trial 0 failed with value None.[0m
+Error training LSTM: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 38 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:15:04,379][0m A new study created in memory with name: no-name-99f5def8-f6e5-4426-832c-59d6b868bc04[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:04,401][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'grid_size': 5, 'batch_size': 16, 'spline_order': 2, 'scaler_type': 'minmax'} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:04,402][0m Trial 0 failed with value None.[0m
+Error training KAN: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 39 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 5/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:15:04,426][0m A new study created in memory with name: no-name-c5616704-c20e-4b6e-a1f7-33a50c0b56c2[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:04,473][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'dropout': 0.10893175054065068, 'conv_hidden_size': 32, 'top_k': 7, 'num_kernels': 8, 'encoder_layers': 2, 'batch_size': 16} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:04,473][0m Trial 0 failed with value None.[0m
+Error training TimesNet: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 40 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:15:04,490][0m A new study created in memory with name: no-name-395bdb13-7c4f-4132-af55-e4c88633312c[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:04,497][0m Trial 0 failed with parameters: {'input_size': 96, 'nhead': 2, 'num_encoder_layers': 2, 'num_decoder_layers': 1, 'batch_size': 32, 'scaler_type': 'minmax'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:15:04,497][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 41 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:15:04,513][0m A new study created in memory with name: no-name-2b70c308-0582-4ab4-909c-e6d5ac25d4e5[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:04,516][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 64, 'num_layers': 2, 'batch_size': 64} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:15:04,516][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 42 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:15:04,532][0m A new study created in memory with name: no-name-d87ed18b-7397-459b-9d86-6f2d741f922a[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:04,540][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 256, 'encoder_n_layers': 1, 'decoder_hidden_size': 64, 'batch_size': 32} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:04,540][0m Trial 0 failed with value None.[0m
+Error training LSTM: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 43 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:15:04,557][0m A new study created in memory with name: no-name-1d724b03-fa41-445b-84ea-c0f8aa9cc9cb[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:04,583][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 256, 'grid_size': 20, 'batch_size': 32, 'spline_order': 2, 'scaler_type': 'standard'} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:04,583][0m Trial 0 failed with value None.[0m
+Error training KAN: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 44 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:15:04,600][0m A new study created in memory with name: no-name-9b437107-5189-40b5-9586-95a0cb9caf4f[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:04,615][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 128, 'dropout': 0.23014011535326906, 'conv_hidden_size': 16, 'top_k': 4, 'num_kernels': 4, 'encoder_layers': 2, 'batch_size': 16} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:04,615][0m Trial 0 failed with value None.[0m
+Error training TimesNet: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 45 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:15:04,632][0m A new study created in memory with name: no-name-f0fb0bc2-6869-4b3b-bf22-65128d875579[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:04,641][0m Trial 0 failed with parameters: {'input_size': 72, 'nhead': 4, 'num_encoder_layers': 3, 'num_decoder_layers': 3, 'batch_size': 16, 'scaler_type': 'standard'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:15:04,641][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 46 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:15:04,658][0m A new study created in memory with name: no-name-8a2b5872-4693-4c96-8a58-5d325fb98020[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:15:04,661][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'num_layers': 2, 'batch_size': 32} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:15:04,661][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 47 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:15:04,677][0m A new study created in memory with name: no-name-633cdbbb-7e82-47e7-a2e2-1536fbc9498c[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:04,685][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 32, 'encoder_n_layers': 3, 'decoder_hidden_size': 64, 'batch_size': 128} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:04,685][0m Trial 0 failed with value None.[0m
+Error training LSTM: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 48 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:15:04,701][0m A new study created in memory with name: no-name-cfd61741-a4fc-4f4f-9575-4707222b5cd2[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:15:04,723][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'grid_size': 5, 'batch_size': 16, 'spline_order': 4, 'scaler_type': 'minmax'} because of the following error: TypeError("CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 647, in configure_optimizers
+    lr_scheduler["scheduler"] = self.lr_scheduler(
+                                ^^^^^^^^^^^^^^^^^^
+TypeError: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+[33m[W 2026-01-16 00:15:04,724][0m Trial 0 failed with value None.[0m
+Error training KAN: CosineAnnealingLR.__init__() missing 1 required positional argument: 'T_max'
+Step: 49 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+======================================================================
+STATISTICS
+======================================================================
+Total Steps: 50
+Best Action: 0 (TimesNet)
+Action Counts: [10.0, 10.0, 10.0, 10.0, 10.0]
+Mean Rewards: ['-1.000000', '-1.000000', '-1.000000', '-1.000000', '-1.000000']
+Total Rewards: ['-10.000000', '-10.000000', '-10.000000', '-10.000000', '-10.000000']
+======================================================================
+
+✓ Agent saved: outputs/run_20260116_001500/agent.json
+
+======================================================================
+Training ended at 2026-01-16 00:15:04
+All outputs saved to: outputs/run_20260116_001500
+======================================================================
+Eğitim tamamlandı.

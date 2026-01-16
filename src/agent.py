@@ -13,6 +13,8 @@ class UCBAgent:
         self.total_rewards = np.zeros(n_actions) # Her actionın toplam ödülü
         self.mean_rewards = np.zeros(n_actions) # Her actionın ortalama ödülü
         self.t = 0 # Toplam adım sayısı
+        self.action_history = [] # Seçilen actionların geçmişi
+        self.reward_history = [] # Alınan ödüllerin geçmişi
     
     def select_action(self):
         # İlk turda her action'ı en az bir kez dene
@@ -37,6 +39,8 @@ class UCBAgent:
         self.counts[action] += 1
         self.total_rewards[action] += reward
         self.mean_rewards[action] = self.total_rewards[action] / self.counts[action]
+        self.action_history.append(int(action))
+        self.reward_history.append(float(reward))
 
     def get_stats(self) -> Dict:
         """Agent istatistikleri"""

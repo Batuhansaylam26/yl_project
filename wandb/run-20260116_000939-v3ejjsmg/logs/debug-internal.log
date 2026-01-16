@@ -1,0 +1,11 @@
+{"time":"2026-01-16T00:09:39.817605709Z","level":"INFO","msg":"stream: starting","core version":"0.24.0"}
+{"time":"2026-01-16T00:09:40.141049043Z","level":"INFO","msg":"stream: created new stream","id":"v3ejjsmg"}
+{"time":"2026-01-16T00:09:40.141514835Z","level":"INFO","msg":"handler: started","stream_id":"v3ejjsmg"}
+{"time":"2026-01-16T00:09:40.144377418Z","level":"INFO","msg":"stream: started","id":"v3ejjsmg"}
+{"time":"2026-01-16T00:09:40.144402168Z","level":"INFO","msg":"writer: started","stream_id":"v3ejjsmg"}
+{"time":"2026-01-16T00:09:40.144466335Z","level":"INFO","msg":"sender: started","stream_id":"v3ejjsmg"}
+{"time":"2026-01-16T00:09:44.553464087Z","level":"INFO","msg":"stream: closing","id":"v3ejjsmg"}
+{"time":"2026-01-16T00:09:45.731404712Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2026-01-16T00:09:46.154070338Z","level":"INFO","msg":"handler: closed","stream_id":"v3ejjsmg"}
+{"time":"2026-01-16T00:09:46.154718754Z","level":"INFO","msg":"sender: closed","stream_id":"v3ejjsmg"}
+{"time":"2026-01-16T00:09:46.154913879Z","level":"INFO","msg":"stream: closed","id":"v3ejjsmg"}

@@ -3,3 +3,4 @@ outputs/
 *.pptx
 *.docx
 .DS_Store
+wandb_conf.sh

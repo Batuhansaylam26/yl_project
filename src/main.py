@@ -114,9 +114,9 @@ def main() -> None:
     print(f"{'='*70}")
     print(f"Total Steps: {stats['total_steps']}")
     print(f"Best Action: {stats['best_action']} ({env.models[stats['best_action']]})")
-    print(f"Average Reward: {stats['avg_reward']:.6f}")
     print(f"Action Counts: {stats['action_counts']}")
     print(f"Mean Rewards: {[f'{r:.6f}' for r in stats['mean_rewards']]}")
+    print(f"Total Rewards: {[f'{r:.6f}' for r in stats['total_rewards']]}")
     print(f"{'='*70}\n")
     
     # Save agent

@@ -1,0 +1,2424 @@
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+`Trainer(val_check_interval=1)` was configured so validation will run after every batch.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:42,637][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 128, 'dropout': 0.4759537033001366, 'conv_hidden_size': 16, 'top_k': 6, 'num_kernels': 4, 'encoder_layers': 2, 'batch_size': 64} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:42,637][0m Trial 0 failed with value None.[0m
+Error training TimesNet: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 0 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:02:42,663][0m A new study created in memory with name: no-name-617499f0-6650-477a-94be-685532b8ab93[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:42,674][0m Trial 0 failed with parameters: {'input_size': 96, 'nhead': 2, 'num_encoder_layers': 2, 'num_decoder_layers': 2, 'batch_size': 64, 'scaler_type': 'standard'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:02:42,674][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 1 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:02:42,696][0m A new study created in memory with name: no-name-f0323740-0d01-4d35-b331-d51c66a2186e[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:42,701][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 32, 'num_layers': 2, 'batch_size': 64} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:02:42,701][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 2 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:02:42,719][0m A new study created in memory with name: no-name-d43ee427-3f4a-4410-8b7d-5b24cab6d6d2[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:42,727][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 32, 'encoder_n_layers': 2, 'decoder_hidden_size': 32, 'batch_size': 128} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:42,727][0m Trial 0 failed with value None.[0m
+Error training LSTM: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 3 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:02:42,745][0m A new study created in memory with name: no-name-9a15244a-a0de-4032-9d35-0198c0f30307[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:42,759][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 32, 'grid_size': 15, 'batch_size': 64, 'spline_order': 3, 'scaler_type': 'standard'} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:42,760][0m Trial 0 failed with value None.[0m
+Error training KAN: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 4 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:02:42,780][0m A new study created in memory with name: no-name-6d401a23-c496-4f29-9a31-f791132d400d[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+`Trainer(val_check_interval=1)` was configured so validation will run after every batch.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:42,904][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'dropout': 0.17376925642891455, 'conv_hidden_size': 32, 'top_k': 5, 'num_kernels': 6, 'encoder_layers': 3, 'batch_size': 16} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:42,904][0m Trial 0 failed with value None.[0m
+Error training TimesNet: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 5 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:02:42,926][0m A new study created in memory with name: no-name-4ab5ff1b-e004-4e58-8778-ad29a2c504d1[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:42,933][0m Trial 0 failed with parameters: {'input_size': 72, 'nhead': 4, 'num_encoder_layers': 4, 'num_decoder_layers': 1, 'batch_size': 64, 'scaler_type': 'robust'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:02:42,933][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 6 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:02:42,951][0m A new study created in memory with name: no-name-ba86eec1-789f-408a-8e22-8fb847f45c16[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:42,954][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'num_layers': 3, 'batch_size': 64} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:02:42,954][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 7 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:02:42,972][0m A new study created in memory with name: no-name-f924d77a-0831-4de9-a278-6e484d4d69fd[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:42,980][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 128, 'encoder_n_layers': 2, 'decoder_hidden_size': 64, 'batch_size': 32} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:42,980][0m Trial 0 failed with value None.[0m
+Error training LSTM: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 8 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:02:42,999][0m A new study created in memory with name: no-name-42935b8b-c099-472a-b7c9-298efbb77596[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:43,037][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 256, 'grid_size': 10, 'batch_size': 64, 'spline_order': 2, 'scaler_type': 'standard'} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:43,038][0m Trial 0 failed with value None.[0m
+Error training KAN: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 9 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 2/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:02:43,055][0m A new study created in memory with name: no-name-32a9c0bd-a4d0-4729-a65f-428fe7b03967[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+`Trainer(val_check_interval=1)` was configured so validation will run after every batch.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:43,825][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'dropout': 0.07232987765485366, 'conv_hidden_size': 128, 'top_k': 6, 'num_kernels': 7, 'encoder_layers': 3, 'batch_size': 128} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:43,825][0m Trial 0 failed with value None.[0m
+Error training TimesNet: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 10 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:02:43,850][0m A new study created in memory with name: no-name-4fd4bc69-98f8-4b16-b705-e4aa4624b58c[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:43,859][0m Trial 0 failed with parameters: {'input_size': 48, 'nhead': 8, 'num_encoder_layers': 4, 'num_decoder_layers': 1, 'batch_size': 16, 'scaler_type': 'standard'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:02:43,859][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 11 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:02:43,881][0m A new study created in memory with name: no-name-c813ad3e-4e00-4027-a7ff-589094da77f4[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:43,883][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'num_layers': 3, 'batch_size': 16} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:02:43,884][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 12 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:02:43,902][0m A new study created in memory with name: no-name-130982b5-b06b-4857-913f-9bc8c067d513[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:43,910][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 64, 'encoder_n_layers': 3, 'decoder_hidden_size': 32, 'batch_size': 16} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:43,910][0m Trial 0 failed with value None.[0m
+Error training LSTM: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 13 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:02:43,930][0m A new study created in memory with name: no-name-8b168403-c170-4e4b-b390-ae4db9ce4bf4[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:43,940][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'grid_size': 5, 'batch_size': 64, 'spline_order': 3, 'scaler_type': 'standard'} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:43,941][0m Trial 0 failed with value None.[0m
+Error training KAN: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 14 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:02:43,959][0m A new study created in memory with name: no-name-9aa20c16-6986-4f4f-9fd6-d891207a0322[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+`Trainer(val_check_interval=1)` was configured so validation will run after every batch.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,041][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 128, 'dropout': 0.49101699981041996, 'conv_hidden_size': 64, 'top_k': 6, 'num_kernels': 5, 'encoder_layers': 4, 'batch_size': 128} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,042][0m Trial 0 failed with value None.[0m
+Error training TimesNet: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 15 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:02:44,059][0m A new study created in memory with name: no-name-53422681-830a-49e2-b8f3-60e472ba3c56[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:44,066][0m Trial 0 failed with parameters: {'input_size': 48, 'nhead': 4, 'num_encoder_layers': 1, 'num_decoder_layers': 1, 'batch_size': 16, 'scaler_type': 'minmax'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:02:44,067][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 16 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:02:44,084][0m A new study created in memory with name: no-name-871b6c94-11d1-42f5-815c-570877c075dc[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:44,087][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'num_layers': 2, 'batch_size': 16} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:02:44,087][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 17 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:02:44,104][0m A new study created in memory with name: no-name-08d11a94-19cb-45cf-9606-60560dc483a9[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,112][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 64, 'encoder_n_layers': 2, 'decoder_hidden_size': 256, 'batch_size': 128} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,112][0m Trial 0 failed with value None.[0m
+Error training LSTM: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 18 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:02:44,128][0m A new study created in memory with name: no-name-605d3ba1-a98a-45c1-b0b8-a94ef52f9a34[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,137][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 32, 'grid_size': 5, 'batch_size': 128, 'spline_order': 3, 'scaler_type': 'standard'} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,137][0m Trial 0 failed with value None.[0m
+Error training KAN: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 19 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 3/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:02:44,154][0m A new study created in memory with name: no-name-5a253706-71ad-477d-a202-66316dd7cf88[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+`Trainer(val_check_interval=1)` was configured so validation will run after every batch.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,172][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 128, 'dropout': 0.20098226164351052, 'conv_hidden_size': 16, 'top_k': 4, 'num_kernels': 4, 'encoder_layers': 3, 'batch_size': 128} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,172][0m Trial 0 failed with value None.[0m
+Error training TimesNet: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 20 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:02:44,189][0m A new study created in memory with name: no-name-00bacbdb-aa06-422e-a8bb-f884c6569c5e[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:44,198][0m Trial 0 failed with parameters: {'input_size': 96, 'nhead': 8, 'num_encoder_layers': 4, 'num_decoder_layers': 4, 'batch_size': 128, 'scaler_type': 'standard'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:02:44,198][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 21 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:02:44,214][0m A new study created in memory with name: no-name-86a39c3a-0511-4eb6-9c87-87aa416be567[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:44,218][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 256, 'num_layers': 1, 'batch_size': 128} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:02:44,218][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 22 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:02:44,235][0m A new study created in memory with name: no-name-f93f0d2a-b73e-4a92-af79-d9080adcaf11[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,243][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'encoder_n_layers': 2, 'decoder_hidden_size': 32, 'batch_size': 16} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,243][0m Trial 0 failed with value None.[0m
+Error training LSTM: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 23 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:02:44,261][0m A new study created in memory with name: no-name-f5d52b57-3765-430b-bc17-45768a7cca28[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,269][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 32, 'grid_size': 10, 'batch_size': 128, 'spline_order': 3, 'scaler_type': 'robust'} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,269][0m Trial 0 failed with value None.[0m
+Error training KAN: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 24 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:02:44,286][0m A new study created in memory with name: no-name-4b9f7925-59dd-4275-b6ef-d5237af6f298[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+`Trainer(val_check_interval=1)` was configured so validation will run after every batch.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,316][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 256, 'dropout': 0.3878530266541875, 'conv_hidden_size': 16, 'top_k': 5, 'num_kernels': 5, 'encoder_layers': 2, 'batch_size': 64} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,316][0m Trial 0 failed with value None.[0m
+Error training TimesNet: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 25 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:02:44,332][0m A new study created in memory with name: no-name-d8ef8043-f3ff-4ef0-8f3b-e29bf313f387[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:44,340][0m Trial 0 failed with parameters: {'input_size': 96, 'nhead': 2, 'num_encoder_layers': 1, 'num_decoder_layers': 3, 'batch_size': 128, 'scaler_type': 'standard'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:02:44,341][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 26 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:02:44,358][0m A new study created in memory with name: no-name-9ea897d5-08fc-49af-879e-b37dd718e1a4[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:44,360][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 64, 'num_layers': 3, 'batch_size': 32} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:02:44,361][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 27 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:02:44,377][0m A new study created in memory with name: no-name-d7209f67-9504-43f6-a3f2-111d5147942a[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,384][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 256, 'encoder_n_layers': 1, 'decoder_hidden_size': 64, 'batch_size': 16} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,384][0m Trial 0 failed with value None.[0m
+Error training LSTM: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 28 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:02:44,402][0m A new study created in memory with name: no-name-6f7b01a2-75c2-4e59-952f-e2eaf0404738[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,410][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'grid_size': 10, 'batch_size': 16, 'spline_order': 2, 'scaler_type': 'standard'} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,411][0m Trial 0 failed with value None.[0m
+Error training KAN: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 29 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 4/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:02:44,428][0m A new study created in memory with name: no-name-f3f934ea-1ba5-42f6-b785-6a133c334443[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+`Trainer(val_check_interval=1)` was configured so validation will run after every batch.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,448][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 32, 'dropout': 0.2397467038485327, 'conv_hidden_size': 64, 'top_k': 7, 'num_kernels': 4, 'encoder_layers': 4, 'batch_size': 16} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,449][0m Trial 0 failed with value None.[0m
+Error training TimesNet: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 30 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:02:44,466][0m A new study created in memory with name: no-name-e2ba798d-47d7-4eae-9e14-caa77883dd51[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:44,475][0m Trial 0 failed with parameters: {'input_size': 72, 'nhead': 2, 'num_encoder_layers': 4, 'num_decoder_layers': 2, 'batch_size': 32, 'scaler_type': 'robust'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:02:44,475][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 31 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:02:44,492][0m A new study created in memory with name: no-name-1339cbc1-df5e-43e6-b7e0-c640d62a7aba[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:44,495][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'num_layers': 2, 'batch_size': 32} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:02:44,495][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 32 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:02:44,512][0m A new study created in memory with name: no-name-0a28a7b2-b790-422d-bc54-44646237b9e7[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,519][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 32, 'encoder_n_layers': 3, 'decoder_hidden_size': 64, 'batch_size': 64} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,520][0m Trial 0 failed with value None.[0m
+Error training LSTM: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 33 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:02:44,537][0m A new study created in memory with name: no-name-bd7b1510-e384-4814-ae82-c7225fec0bca[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,548][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'grid_size': 5, 'batch_size': 64, 'spline_order': 4, 'scaler_type': 'minmax'} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,548][0m Trial 0 failed with value None.[0m
+Error training KAN: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 34 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:02:44,565][0m A new study created in memory with name: no-name-a414d586-3ec3-453b-ab52-c251c986e4ff[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+`Trainer(val_check_interval=1)` was configured so validation will run after every batch.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,701][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'dropout': 0.21376080978566508, 'conv_hidden_size': 128, 'top_k': 7, 'num_kernels': 6, 'encoder_layers': 2, 'batch_size': 128} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,701][0m Trial 0 failed with value None.[0m
+Error training TimesNet: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 35 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:02:44,719][0m A new study created in memory with name: no-name-1483fc08-04b0-4123-9018-dd4384f8def6[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:44,727][0m Trial 0 failed with parameters: {'input_size': 96, 'nhead': 2, 'num_encoder_layers': 3, 'num_decoder_layers': 2, 'batch_size': 16, 'scaler_type': 'robust'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:02:44,728][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 36 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:02:44,745][0m A new study created in memory with name: no-name-84e90582-f79a-45f8-aff5-ba5894e40df7[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:44,747][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 64, 'num_layers': 2, 'batch_size': 32} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:02:44,748][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 37 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:02:44,764][0m A new study created in memory with name: no-name-7134a34e-cbc6-4a81-afd7-a545f520cb62[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,771][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 32, 'encoder_n_layers': 2, 'decoder_hidden_size': 256, 'batch_size': 16} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,772][0m Trial 0 failed with value None.[0m
+Error training LSTM: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 38 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:02:44,789][0m A new study created in memory with name: no-name-c4073136-8ed9-4ba7-a3eb-e01f53f29919[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,797][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 32, 'grid_size': 15, 'batch_size': 128, 'spline_order': 4, 'scaler_type': 'standard'} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,798][0m Trial 0 failed with value None.[0m
+Error training KAN: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 39 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 5/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:02:44,816][0m A new study created in memory with name: no-name-de0d7702-aee3-4831-8f3a-08853f8d17e9[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+`Trainer(val_check_interval=1)` was configured so validation will run after every batch.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,863][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 64, 'dropout': 0.29545042617621764, 'conv_hidden_size': 128, 'top_k': 3, 'num_kernels': 4, 'encoder_layers': 4, 'batch_size': 32} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,863][0m Trial 0 failed with value None.[0m
+Error training TimesNet: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 40 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:02:44,881][0m A new study created in memory with name: no-name-dd8eb4e1-dc2d-4831-8ce5-c8e6c6fd5465[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:44,890][0m Trial 0 failed with parameters: {'input_size': 72, 'nhead': 4, 'num_encoder_layers': 4, 'num_decoder_layers': 4, 'batch_size': 64, 'scaler_type': 'robust'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:02:44,890][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 41 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:02:44,908][0m A new study created in memory with name: no-name-460f84db-d86e-4e70-8344-defc2406f0bf[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:44,911][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 64, 'num_layers': 3, 'batch_size': 64} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:02:44,911][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 42 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:02:44,928][0m A new study created in memory with name: no-name-bf5ee95a-ec46-4300-be6f-ddb6007b9e5c[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,936][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 256, 'encoder_n_layers': 1, 'decoder_hidden_size': 32, 'batch_size': 32} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,936][0m Trial 0 failed with value None.[0m
+Error training LSTM: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 43 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:02:44,953][0m A new study created in memory with name: no-name-444fd098-45da-4985-a0aa-e8f5d66f6b8a[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:44,967][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 128, 'grid_size': 20, 'batch_size': 64, 'spline_order': 3, 'scaler_type': 'robust'} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:44,967][0m Trial 0 failed with value None.[0m
+Error training KAN: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 44 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:02:44,984][0m A new study created in memory with name: no-name-f7b114d7-fdf2-41c3-9cff-e079be7d1937[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+`Trainer(val_check_interval=1)` was configured so validation will run after every batch.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:45,098][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 128, 'dropout': 0.4244062273235484, 'conv_hidden_size': 64, 'top_k': 4, 'num_kernels': 7, 'encoder_layers': 2, 'batch_size': 32} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:45,099][0m Trial 0 failed with value None.[0m
+Error training TimesNet: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 45 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:02:45,116][0m A new study created in memory with name: no-name-4d34f209-f1f7-4357-b388-87a753446706[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:45,125][0m Trial 0 failed with parameters: {'input_size': 72, 'nhead': 2, 'num_encoder_layers': 2, 'num_decoder_layers': 3, 'batch_size': 32, 'scaler_type': 'robust'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:02:45,126][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 46 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:02:45,143][0m A new study created in memory with name: no-name-bacb0b64-371f-4885-8a52-7af0a1157f20[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:02:45,146][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 64, 'num_layers': 1, 'batch_size': 64} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:02:45,146][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 47 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:02:45,162][0m A new study created in memory with name: no-name-eb5cce98-0689-4c7c-9537-cead17a16839[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:45,170][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 128, 'encoder_n_layers': 3, 'decoder_hidden_size': 256, 'batch_size': 128} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:45,171][0m Trial 0 failed with value None.[0m
+Error training LSTM: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 48 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:02:45,187][0m A new study created in memory with name: no-name-da706f6c-ccdf-4d3d-963e-df6ca9cfb81c[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:02:45,197][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'grid_size': 5, 'batch_size': 128, 'spline_order': 2, 'scaler_type': 'minmax'} because of the following error: TypeError("Adam.__init__() got an unexpected keyword argument 'rho'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 180, in _init_optimizers_and_lr_schedulers
+    optim_conf = call._call_lightning_module_hook(model.trainer, "configure_optimizers", pl_module=model)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 629, in configure_optimizers
+    optimizer = self.optimizer(params=self.parameters(), **optimizer_kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Adam.__init__() got an unexpected keyword argument 'rho'
+[33m[W 2026-01-16 00:02:45,197][0m Trial 0 failed with value None.[0m
+Error training KAN: Adam.__init__() got an unexpected keyword argument 'rho'
+Step: 49 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+======================================================================
+STATISTICS
+======================================================================
+Total Steps: 50
+Best Action: 0 (TimesNet)
+Action Counts: [10.0, 10.0, 10.0, 10.0, 10.0]
+Mean Rewards: ['-1.000000', '-1.000000', '-1.000000', '-1.000000', '-1.000000']
+Total Rewards: ['-10.000000', '-10.000000', '-10.000000', '-10.000000', '-10.000000']
+======================================================================
+
+✓ Agent saved: outputs/run_20260116_000240/agent.json
+
+======================================================================
+Training ended at 2026-01-16 00:02:45
+All outputs saved to: outputs/run_20260116_000240
+======================================================================
+Eğitim tamamlandı.

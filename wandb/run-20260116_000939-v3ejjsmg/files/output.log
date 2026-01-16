@@ -1,0 +1,2264 @@
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:41,062][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'dropout': 0.05389999086684, 'conv_hidden_size': 16, 'top_k': 4, 'num_kernels': 6, 'encoder_layers': 1, 'batch_size': 32} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:41,063][0m Trial 0 failed with value None.[0m
+Error training TimesNet: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 0 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:09:41,089][0m A new study created in memory with name: no-name-65df5ff6-5f2e-4107-964f-21849afc632a[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:41,099][0m Trial 0 failed with parameters: {'input_size': 72, 'nhead': 8, 'num_encoder_layers': 2, 'num_decoder_layers': 2, 'batch_size': 128, 'scaler_type': 'standard'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:09:41,099][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 1 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:09:41,118][0m A new study created in memory with name: no-name-1e8634a8-60fd-4fbd-89c0-14cfb0632d86[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:41,120][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 32, 'num_layers': 1, 'batch_size': 16} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:09:41,121][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 2 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:09:41,138][0m A new study created in memory with name: no-name-ac079b21-5a55-4808-acc2-268c0052b191[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:41,146][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 128, 'encoder_n_layers': 2, 'decoder_hidden_size': 128, 'batch_size': 128} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:41,146][0m Trial 0 failed with value None.[0m
+Error training LSTM: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 3 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:09:41,165][0m A new study created in memory with name: no-name-ef091dfc-83d8-4755-b18b-c454c6575f1f[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:41,177][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'grid_size': 5, 'batch_size': 16, 'spline_order': 4, 'scaler_type': 'standard'} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:41,178][0m Trial 0 failed with value None.[0m
+Error training KAN: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 4 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:09:41,197][0m A new study created in memory with name: no-name-d252d344-69cc-4baf-9e40-97922e12b53c[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:41,783][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 128, 'dropout': 0.27673706522008634, 'conv_hidden_size': 128, 'top_k': 3, 'num_kernels': 8, 'encoder_layers': 3, 'batch_size': 64} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:41,784][0m Trial 0 failed with value None.[0m
+Error training TimesNet: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 5 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:09:41,811][0m A new study created in memory with name: no-name-1288f09c-a531-4259-8c29-7947bbdd4a54[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:41,819][0m Trial 0 failed with parameters: {'input_size': 72, 'nhead': 8, 'num_encoder_layers': 2, 'num_decoder_layers': 2, 'batch_size': 32, 'scaler_type': 'standard'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:09:41,820][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 6 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:09:41,838][0m A new study created in memory with name: no-name-e3b1c44a-90e1-4b95-bd0e-9eb271402625[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:41,841][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 32, 'num_layers': 3, 'batch_size': 128} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:09:41,841][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 7 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:09:41,859][0m A new study created in memory with name: no-name-fcbd52d8-364f-49af-b58e-ff5a56eb5f74[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:41,866][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 32, 'encoder_n_layers': 1, 'decoder_hidden_size': 256, 'batch_size': 16} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:41,867][0m Trial 0 failed with value None.[0m
+Error training LSTM: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 8 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:09:41,883][0m A new study created in memory with name: no-name-eb225ccf-ef74-46ec-8370-8cdddd084e68[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:41,892][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 128, 'grid_size': 5, 'batch_size': 64, 'spline_order': 4, 'scaler_type': 'minmax'} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:41,893][0m Trial 0 failed with value None.[0m
+Error training KAN: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 9 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 2/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:09:41,910][0m A new study created in memory with name: no-name-d4e8c342-0b49-46ae-875d-6c174875c9e1[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:41,929][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 32, 'dropout': 0.48244862805072963, 'conv_hidden_size': 16, 'top_k': 3, 'num_kernels': 8, 'encoder_layers': 2, 'batch_size': 64} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:41,929][0m Trial 0 failed with value None.[0m
+Error training TimesNet: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 10 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:09:41,946][0m A new study created in memory with name: no-name-b86caca6-1bf2-4c1b-adf8-2ea75ce0c764[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:41,952][0m Trial 0 failed with parameters: {'input_size': 24, 'nhead': 2, 'num_encoder_layers': 2, 'num_decoder_layers': 3, 'batch_size': 64, 'scaler_type': 'robust'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:09:41,952][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 11 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:09:41,970][0m A new study created in memory with name: no-name-574c397d-e24a-4975-b1c7-0b27db280ed3[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:41,972][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 32, 'num_layers': 3, 'batch_size': 16} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:09:41,972][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 12 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:09:41,989][0m A new study created in memory with name: no-name-e93e2867-7456-47bc-a719-8c8651135d2e[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:41,996][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 32, 'encoder_n_layers': 3, 'decoder_hidden_size': 256, 'batch_size': 16} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:41,996][0m Trial 0 failed with value None.[0m
+Error training LSTM: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 13 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:09:42,013][0m A new study created in memory with name: no-name-4d3c5e0f-f0ce-4dd4-be40-adf9f9d71988[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:42,022][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 32, 'grid_size': 15, 'batch_size': 16, 'spline_order': 3, 'scaler_type': 'standard'} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:42,022][0m Trial 0 failed with value None.[0m
+Error training KAN: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 14 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:09:42,039][0m A new study created in memory with name: no-name-89386e1e-114d-48a9-81c6-94c8e3ea5f1a[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:42,402][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'dropout': 0.1704819084078495, 'conv_hidden_size': 64, 'top_k': 3, 'num_kernels': 8, 'encoder_layers': 4, 'batch_size': 64} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:42,403][0m Trial 0 failed with value None.[0m
+Error training TimesNet: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 15 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:09:42,423][0m A new study created in memory with name: no-name-d8db52ec-b3bd-40d9-ad2d-a28f096c64a2[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:42,432][0m Trial 0 failed with parameters: {'input_size': 72, 'nhead': 2, 'num_encoder_layers': 3, 'num_decoder_layers': 3, 'batch_size': 64, 'scaler_type': 'standard'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:09:42,432][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 16 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:09:42,449][0m A new study created in memory with name: no-name-28e5a7ec-595b-4298-ae55-bb8794f73f3f[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:42,452][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 32, 'num_layers': 2, 'batch_size': 16} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:09:42,452][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 17 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:09:42,468][0m A new study created in memory with name: no-name-6b5f4b45-0ad9-4364-b423-d7cfb67b75c8[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:42,477][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 256, 'encoder_n_layers': 2, 'decoder_hidden_size': 128, 'batch_size': 16} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:42,477][0m Trial 0 failed with value None.[0m
+Error training LSTM: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 18 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:09:42,495][0m A new study created in memory with name: no-name-f5d9bfc1-c0a3-492d-be76-0a77187ede8a[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:42,514][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'grid_size': 15, 'batch_size': 128, 'spline_order': 4, 'scaler_type': 'standard'} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:42,514][0m Trial 0 failed with value None.[0m
+Error training KAN: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 19 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 3/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:09:42,533][0m A new study created in memory with name: no-name-3d37c155-3a32-43cd-851f-171e1d54829e[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:42,545][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 32, 'dropout': 0.36218187811831043, 'conv_hidden_size': 64, 'top_k': 7, 'num_kernels': 4, 'encoder_layers': 1, 'batch_size': 32} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:42,545][0m Trial 0 failed with value None.[0m
+Error training TimesNet: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 20 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:09:42,562][0m A new study created in memory with name: no-name-e8be9613-661d-4850-bea8-e74fc26faae0[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:42,571][0m Trial 0 failed with parameters: {'input_size': 48, 'nhead': 4, 'num_encoder_layers': 1, 'num_decoder_layers': 3, 'batch_size': 16, 'scaler_type': 'robust'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:09:42,571][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 21 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:09:42,588][0m A new study created in memory with name: no-name-049d22ac-2563-46e7-a5b6-ec81d8531e2c[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:42,591][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 32, 'num_layers': 2, 'batch_size': 16} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:09:42,591][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 22 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:09:42,607][0m A new study created in memory with name: no-name-ff6aa3c0-b20f-41e3-a3aa-809d01c48ac7[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:42,616][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 256, 'encoder_n_layers': 3, 'decoder_hidden_size': 32, 'batch_size': 128} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:42,617][0m Trial 0 failed with value None.[0m
+Error training LSTM: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 23 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:09:42,633][0m A new study created in memory with name: no-name-be0c931b-90ab-4cde-b208-0817adf1cde8[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:42,653][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 256, 'grid_size': 15, 'batch_size': 128, 'spline_order': 3, 'scaler_type': 'robust'} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:42,653][0m Trial 0 failed with value None.[0m
+Error training KAN: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 24 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:09:42,671][0m A new study created in memory with name: no-name-5c02a975-ef2b-4f70-baaf-5c86d8cc8040[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:42,761][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 128, 'dropout': 0.10057630836599674, 'conv_hidden_size': 32, 'top_k': 5, 'num_kernels': 7, 'encoder_layers': 3, 'batch_size': 32} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:42,761][0m Trial 0 failed with value None.[0m
+Error training TimesNet: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 25 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:09:42,785][0m A new study created in memory with name: no-name-3783efe4-2c68-4a97-8514-0a3c0ec9446a[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:42,794][0m Trial 0 failed with parameters: {'input_size': 48, 'nhead': 2, 'num_encoder_layers': 2, 'num_decoder_layers': 1, 'batch_size': 16, 'scaler_type': 'minmax'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:09:42,794][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 26 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:09:42,813][0m A new study created in memory with name: no-name-e3c7df55-fd11-4362-8ef2-1598e01ebd23[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:42,815][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 32, 'num_layers': 1, 'batch_size': 32} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:09:42,816][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 27 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:09:42,832][0m A new study created in memory with name: no-name-089dc4f4-6df7-47ce-9ad8-dfec631c1d0a[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:42,839][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 32, 'encoder_n_layers': 1, 'decoder_hidden_size': 64, 'batch_size': 32} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:42,839][0m Trial 0 failed with value None.[0m
+Error training LSTM: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 28 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:09:42,856][0m A new study created in memory with name: no-name-9246e68e-0aeb-408e-89fb-c9037b0c004d[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:42,867][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 256, 'grid_size': 10, 'batch_size': 128, 'spline_order': 3, 'scaler_type': 'minmax'} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:42,868][0m Trial 0 failed with value None.[0m
+Error training KAN: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 29 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 4/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:09:42,885][0m A new study created in memory with name: no-name-0ed0cf49-802c-4fd9-94e2-911bb539fd5d[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:42,923][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 128, 'dropout': 0.21562249091110847, 'conv_hidden_size': 64, 'top_k': 5, 'num_kernels': 4, 'encoder_layers': 3, 'batch_size': 128} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:42,924][0m Trial 0 failed with value None.[0m
+Error training TimesNet: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 30 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:09:42,944][0m A new study created in memory with name: no-name-47b87864-a54a-40e4-b778-39a97c62b7f7[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:42,952][0m Trial 0 failed with parameters: {'input_size': 24, 'nhead': 4, 'num_encoder_layers': 4, 'num_decoder_layers': 4, 'batch_size': 64, 'scaler_type': 'standard'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:09:42,953][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 31 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:09:42,969][0m A new study created in memory with name: no-name-b6cfe468-7aed-4501-bc1e-caa273ded861[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:42,972][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 64, 'num_layers': 3, 'batch_size': 16} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:09:42,972][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 32 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:09:42,989][0m A new study created in memory with name: no-name-6d75a9ef-f13d-45c6-ada3-8ebdb0c8a98a[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:42,997][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 256, 'encoder_n_layers': 1, 'decoder_hidden_size': 64, 'batch_size': 64} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:42,998][0m Trial 0 failed with value None.[0m
+Error training LSTM: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 33 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:09:43,015][0m A new study created in memory with name: no-name-0910e673-6017-4541-85e0-a3052db7ebbc[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:43,062][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 256, 'grid_size': 20, 'batch_size': 128, 'spline_order': 3, 'scaler_type': 'standard'} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:43,063][0m Trial 0 failed with value None.[0m
+Error training KAN: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 34 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:09:43,079][0m A new study created in memory with name: no-name-d2b2f2c4-8b27-4e97-a5b1-469331ff3705[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:43,125][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 64, 'dropout': 0.24640951530197974, 'conv_hidden_size': 64, 'top_k': 3, 'num_kernels': 5, 'encoder_layers': 4, 'batch_size': 64} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:43,125][0m Trial 0 failed with value None.[0m
+Error training TimesNet: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 35 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:09:43,142][0m A new study created in memory with name: no-name-3995f9a8-146f-4861-bc50-9d5c3bddc4d1[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:43,147][0m Trial 0 failed with parameters: {'input_size': 96, 'nhead': 2, 'num_encoder_layers': 3, 'num_decoder_layers': 3, 'batch_size': 32, 'scaler_type': 'minmax'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:09:43,148][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 36 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:09:43,164][0m A new study created in memory with name: no-name-36852153-de62-46a4-a2eb-9f880dd9cabe[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:43,167][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 64, 'num_layers': 2, 'batch_size': 128} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:09:43,167][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 37 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:09:43,183][0m A new study created in memory with name: no-name-c810bfa5-dea2-489b-90ab-40170352249e[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:43,190][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 128, 'encoder_n_layers': 1, 'decoder_hidden_size': 128, 'batch_size': 16} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:43,191][0m Trial 0 failed with value None.[0m
+Error training LSTM: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 38 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:09:43,208][0m A new study created in memory with name: no-name-80e50f9c-18e8-4490-ab56-d2160251c8ea[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:43,220][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 32, 'grid_size': 15, 'batch_size': 64, 'spline_order': 2, 'scaler_type': 'robust'} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:43,221][0m Trial 0 failed with value None.[0m
+Error training KAN: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 39 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+=== Episode 5/5 ===
+
+======================================================================
+Environment Reset
+======================================================================
+
+
+======================================================================
+Step 1/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:09:43,238][0m A new study created in memory with name: no-name-ec447f84-a7e0-477d-969d-00034e0a40c7[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:43,254][0m Trial 0 failed with parameters: {'input_size': 96, 'hidden_size': 32, 'dropout': 0.04039978843672842, 'conv_hidden_size': 64, 'top_k': 4, 'num_kernels': 4, 'encoder_layers': 2, 'batch_size': 128} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:43,254][0m Trial 0 failed with value None.[0m
+Error training TimesNet: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 40 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 2/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:09:43,271][0m A new study created in memory with name: no-name-a4a52f26-7479-4a17-8f94-0c0a722f6825[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:43,280][0m Trial 0 failed with parameters: {'input_size': 96, 'nhead': 8, 'num_encoder_layers': 1, 'num_decoder_layers': 4, 'batch_size': 128, 'scaler_type': 'minmax'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:09:43,280][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 41 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 3/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:09:43,297][0m A new study created in memory with name: no-name-11081d50-ecda-48f9-932d-33666237461a[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:43,301][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'num_layers': 3, 'batch_size': 16} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:09:43,301][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 42 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 4/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:09:43,317][0m A new study created in memory with name: no-name-75310eb7-b8c1-4205-bb3f-41dd614b094b[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:43,325][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'encoder_n_layers': 1, 'decoder_hidden_size': 64, 'batch_size': 64} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:43,325][0m Trial 0 failed with value None.[0m
+Error training LSTM: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 43 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 5/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:09:43,343][0m A new study created in memory with name: no-name-01ca34f4-096b-4985-ade7-a6ee9b4257da[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:43,377][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'grid_size': 15, 'batch_size': 128, 'spline_order': 3, 'scaler_type': 'minmax'} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:43,377][0m Trial 0 failed with value None.[0m
+Error training KAN: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 44 | Action: 4 (KAN) | Reward: -1.000000
+
+======================================================================
+Step 6/10: Training TimesNet
+======================================================================
+[32m[I 2026-01-16 00:09:43,394][0m A new study created in memory with name: no-name-6a26eb0d-611c-4a00-baac-3217cf0d4171[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:44,435][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 256, 'dropout': 0.004526758364407357, 'conv_hidden_size': 128, 'top_k': 6, 'num_kernels': 7, 'encoder_layers': 4, 'batch_size': 128} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:44,436][0m Trial 0 failed with value None.[0m
+Error training TimesNet: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 45 | Action: 0 (TimesNet) | Reward: -1.000000
+
+======================================================================
+Step 7/10: Training VanillaTransformer
+======================================================================
+[32m[I 2026-01-16 00:09:44,458][0m A new study created in memory with name: no-name-2b5c7ca9-908c-441f-a7c2-18a73315ad9c[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:44,467][0m Trial 0 failed with parameters: {'input_size': 24, 'nhead': 4, 'num_encoder_layers': 2, 'num_decoder_layers': 1, 'batch_size': 32, 'scaler_type': 'standard'} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+[33m[W 2026-01-16 00:09:44,467][0m Trial 0 failed with value None.[0m
+Error training VanillaTransformer: Trainer.__init__() got an unexpected keyword argument 'num_encoder_layers'
+Step: 46 | Action: 1 (VanillaTransformer) | Reward: -1.000000
+
+======================================================================
+Step 8/10: Training GRU
+======================================================================
+[32m[I 2026-01-16 00:09:44,487][0m A new study created in memory with name: no-name-b0ca84fb-a05e-4785-947a-fd08f5b8dde2[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+[33m[W 2026-01-16 00:09:44,491][0m Trial 0 failed with parameters: {'input_size': 48, 'hidden_size': 256, 'num_layers': 1, 'batch_size': 32} because of the following error: TypeError("Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'").[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 601, in _fit
+    trainer = pl.Trainer(**model.trainer_kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/utilities/argparse.py", line 70, in insert_env_defaults
+    return fn(self, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+TypeError: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+[33m[W 2026-01-16 00:09:44,491][0m Trial 0 failed with value None.[0m
+Error training GRU: Trainer.__init__() got an unexpected keyword argument 'encoder_num_layers'
+Step: 47 | Action: 2 (GRU) | Reward: -1.000000
+
+======================================================================
+Step 9/10: Training LSTM
+======================================================================
+[32m[I 2026-01-16 00:09:44,509][0m A new study created in memory with name: no-name-af65a569-a2ba-4382-9d31-9cb5029e78a5[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:44,518][0m Trial 0 failed with parameters: {'input_size': 24, 'hidden_size': 256, 'encoder_n_layers': 2, 'decoder_hidden_size': 128, 'batch_size': 64} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:44,518][0m Trial 0 failed with value None.[0m
+Error training LSTM: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 48 | Action: 3 (LSTM) | Reward: -1.000000
+
+======================================================================
+Step 10/10: Training KAN
+======================================================================
+[32m[I 2026-01-16 00:09:44,536][0m A new study created in memory with name: no-name-fff29c36-f8a7-41d3-9cd1-603db8a9112f[0m
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/lightning/pytorch/loggers/wandb.py:400: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+Seed set to 26
+GPU available: False, used: False
+TPU available: False, using: 0 TPU cores
+[34m[1mwandb[0m: [33mWARNING[0m `wandb.require('service')` is a no-op as it is now the default behavior.
+/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py:625: UserWarning: ignoring learning rate passed in optimizer_kwargs, using the model's learning rate
+  warnings.warn(
+[33m[W 2026-01-16 00:09:44,549][0m Trial 0 failed with parameters: {'input_size': 72, 'hidden_size': 64, 'grid_size': 20, 'batch_size': 64, 'spline_order': 2, 'scaler_type': 'minmax'} because of the following error: MisconfigurationException('The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}').[0m
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/optuna/study/_optimize.py", line 205, in _run_trial
+    value_or_values = func(trial)
+                      ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 310, in objective
+    model = self._fit_model(
+            ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_auto.py", line 347, in _fit_model
+    model = model.fit(
+            ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 1924, in fit
+    return self._fit(
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/neuralforecast/common/_base_model.py", line 602, in _fit
+    trainer.fit(model, datamodule=datamodule)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/trainer/trainer.py", line 1053, in _run
+    self.strategy.setup(self)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 159, in setup
+    self.setup_optimizers(trainer)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/strategies/strategy.py", line 139, in setup_optimizers
+    self.optimizers, self.lr_scheduler_configs = _init_optimizers_and_lr_schedulers(self.lightning_module)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 190, in _init_optimizers_and_lr_schedulers
+    _configure_schedulers_automatic_opt(lr_schedulers, monitor)
+  File "/usr/local/lib/python3.12/site-packages/pytorch_lightning/core/optimizer.py", line 278, in _configure_schedulers_automatic_opt
+    raise MisconfigurationException(
+lightning_fabric.utilities.exceptions.MisconfigurationException: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+[33m[W 2026-01-16 00:09:44,549][0m Trial 0 failed with value None.[0m
+Error training KAN: The lr scheduler dict must include a monitor when a `ReduceLROnPlateau` scheduler is used. For example: {"optimizer": optimizer, "lr_scheduler": {"scheduler": scheduler, "monitor": "your_loss"}}
+Step: 49 | Action: 4 (KAN) | Reward: -1.000000
+Henüz sonuç yok!
+
+======================================================================
+STATISTICS
+======================================================================
+Total Steps: 50
+Best Action: 0 (TimesNet)
+Action Counts: [10.0, 10.0, 10.0, 10.0, 10.0]
+Mean Rewards: ['-1.000000', '-1.000000', '-1.000000', '-1.000000', '-1.000000']
+Total Rewards: ['-10.000000', '-10.000000', '-10.000000', '-10.000000', '-10.000000']
+======================================================================
+
+✓ Agent saved: outputs/run_20260116_000938/agent.json
+
+======================================================================
+Training ended at 2026-01-16 00:09:44
+All outputs saved to: outputs/run_20260116_000938
+======================================================================
+Eğitim tamamlandı.
