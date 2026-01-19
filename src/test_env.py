@@ -5,10 +5,11 @@ from neuralforecast.auto import AutoTimesNet, AutoVanillaTransformer, AutoGRU, A
 from neuralforecast import NeuralForecast
 from typing import Tuple, Dict, Optional, List
 from sklearn.metrics import mean_squared_error, r2_score
-from utils import create_callbacks, timesNet_config, LSTM_config, GRU_config, KAN_config, VanillaTransformer_config, get_auto_model_config
+from utils import create_callbacks, timesNet_config, LSTM_config, GRU_config, KAN_config, VanillaTransformer_config, get_auto_model_config, setup_logging
 import os
 import time
 import json
+import logging
 from datetime import datetime
 import matplotlib
 matplotlib.use('Agg') 
@@ -83,30 +84,42 @@ class TestEnv(Env):
         
         self.episode_start_time = None
         self.model_training_times = {}
-        
+        # Loglama ve çıktı dizini ayarları
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         self.output_dir = f"outputs/run_{timestamp}"
         os.makedirs(self.output_dir, exist_ok=True)
         os.makedirs(f"{self.output_dir}/plots", exist_ok=True)
+        os.makedirs(f"{self.output_dir}/logs", exist_ok=True)
         
-        self.log_file = open(f"{self.output_dir}/training_log.txt", "w")
-        self._log_and_print(f"Training started at {timestamp}")
-        self._log_and_print(f"Output directory: {self.output_dir}")
-        self._log_and_print("="*70)
-        self._log_and_print(f"Configuration:")
-        self._log_and_print(f"   Horizon: {self.horizon}")
-        self._log_and_print(f"   Max Steps: {self.max_steps}")
-        self._log_and_print(f"   Models: {', '.join(self.models)}")
-        self._log_and_print(f"   Exogenous vars: {self.exog_vars if self.use_exog else 'None'}")
-        self._log_and_print("="*70 + "\n")
+        # Setup logging system
+        setup_logging(log_dir=f"{self.output_dir}/logs", verbose=True)
+        
+        # Get loggers
+        self.logger = logging.getLogger(__name__)
+        self.episode_logger = logging.getLogger('episode')
+        self.step_logger = logging.getLogger('step')
+        self.json_logger = logging.getLogger('json')
+        
+        # Log initial configuration
+        self.logger.info("="*70)
+        self.logger.info("🚀 TRAINING ENVIRONMENT INITIALIZED")
+        self.logger.info(f"   Timestamp: {timestamp}")
+        self.logger.info(f"   Output Directory: {self.output_dir}")
+        self.logger.info("="*70)
+        self.logger.info("Configuration:")
+        self.logger.info(f"   Horizon: {self.horizon}")
+        self.logger.info(f"   Max Steps: {self.max_steps}")
+        self.logger.info(f"   Model n_trials: {self.model_n_trials}")
+        self.logger.info(f"   Model patience: {self.model_patience}")
+        self.logger.info(f"   Models: {', '.join(self.models)}")
+        self.logger.info(f"   Use Exogenous: {self.use_exog}")
+        self.logger.info(f"   Exogenous vars: {self.exog_vars if self.use_exog else 'None'}")
+        self.logger.info("="*70)
 
-    def _log_and_print(self, message):
-        print(message)
-        if hasattr(self, 'log_file') and self.log_file:
-            self.log_file.write(message + "\n")
-            self.log_file.flush()
+
 
     def get_observation_data(self):
+        self.logger.debug(f"Generating observation data at step {self.current_step}")
         data = []
         for model in self.models:
             perf = self.models_performance[model]
@@ -121,6 +134,7 @@ class TestEnv(Env):
         return np.array(data, dtype=np.float32)
     
     def get_info(self):
+        self.logger.debug(f"Generating info at step {self.current_step}")
         return {
             "step": self.current_step,
             "episode_rewards": self.episode_rewards,
@@ -129,7 +143,7 @@ class TestEnv(Env):
         }
     
     def get_best_model(self) -> str:
-        """En iyi performans gösteren modeli verir"""
+        self.logger.debug("Determining best model based on average rewards")
         best_model = None
         best_reward = -np.inf
         
@@ -142,7 +156,8 @@ class TestEnv(Env):
         
         return best_model if best_model else self.models[0]
     
-    def create_model(self, model_name: str):   
+    def create_model(self, model_name: str):
+        self.logger.debug(f"Creating model: {model_name}") 
         if model_name == 'TimesNet':
             config = get_auto_model_config(
                 horizon=self.horizon,
@@ -151,6 +166,7 @@ class TestEnv(Env):
             )
             if self.use_exog and self.exog_vars:
                 config['hist_exog_list'] = self.exog_vars
+            self.logger.debug(f"TimesNet config: {config}")
             return AutoTimesNet(**config)
         elif model_name == 'VanillaTransformer':
             config = get_auto_model_config(
@@ -158,6 +174,9 @@ class TestEnv(Env):
                 n_trials=self.model_n_trials,
                 model_name=model_name
             )
+            if self.use_exog and self.exog_vars:
+                config['hist_exog_list'] = self.exog_vars
+            self.logger.debug(f"VanillaTransformer config: {config}")
             return AutoVanillaTransformer(**config)
         elif model_name == 'GRU':
             config = get_auto_model_config(
@@ -167,6 +186,7 @@ class TestEnv(Env):
             )
             if self.use_exog and self.exog_vars:
                 config['hist_exog_list'] = self.exog_vars
+            self.logger.debug(f"GRU config: {config}")
             return AutoGRU(**config)
         elif model_name == 'LSTM':
             config = get_auto_model_config(
@@ -176,6 +196,7 @@ class TestEnv(Env):
             )
             if self.use_exog and self.exog_vars:
                 config['hist_exog_list'] = self.exog_vars
+            self.logger.debug(f"LSTM config: {config}")
             return AutoLSTM(**config)
         elif model_name == 'KAN':
             config = get_auto_model_config(
@@ -185,12 +206,14 @@ class TestEnv(Env):
             )
             if self.use_exog and self.exog_vars:
                 config['hist_exog_list'] = self.exog_vars
+            self.logger.debug(f"KAN config: {config}")
             return AutoKAN(**config)
         else:
+            self.logger.debug(f"Error: Unknown model {model_name}")
             raise ValueError(f"Unknown model: {model_name}")
     
     def calculate_reward(self, y_true: np.ndarray, y_pred: np.ndarray) -> Tuple[float, float, float]:
-        """MSE ve R² hesapla"""
+        self.logger.debug("Calculating reward based on MSE and R²")
         mse = mean_squared_error(y_true, y_pred)
         r2 = r2_score(y_true, y_pred)
         
@@ -206,12 +229,12 @@ class TestEnv(Env):
         return reward, mse, r2
     
     def step(self, action: int) -> Tuple[np.ndarray, float, bool, bool, Dict]:
-        """Bir adım at"""
+        self.logger.debug(f"Step {self.current_step + 1}: Action received - {action}")
         model_name = self.models[action]
         
-        self._log_and_print(f"\n{'='*70}")
-        self._log_and_print(f"Step {self.current_step + 1}/{self.max_steps}: Training {model_name}")
-        self._log_and_print(f"{'='*70}")
+        self.logger.debug(f"\n{'='*70}")
+        self.logger.debug(f"Step {self.current_step + 1}/{self.max_steps}: Training {model_name}")
+        self.logger.debug(f"{'='*70}")
         
         # Model training start
         model_start_time = time.time()
@@ -230,7 +253,7 @@ class TestEnv(Env):
                 self.model_training_times[model_name] = []
             self.model_training_times[model_name].append(model_training_time)
             
-            self._log_and_print(f"{model_name} training completed in {model_training_time:.2f}s")
+            self.logger.debug(f"{model_name} training completed in {model_training_time:.2f}s")
             
             # Tahmin yap
             forecasts = nf.predict()
@@ -248,7 +271,7 @@ class TestEnv(Env):
             self.models_performance[model_name]['total_rewards'] += reward
             self.models_performance[model_name]['total_time'] += model_training_time  
             
-            self._log_and_print(f"📊 Results: MSE={mse:.6f}, R²={r2:.6f}, Reward={reward:.6f}")
+            self.logger.debug(f"📊 Results: MSE={mse:.6f}, R²={r2:.6f}, Reward={reward:.6f}")
             
             # Episode bilgilerini kaydet
             self.episode_rewards.append(reward)
@@ -265,7 +288,7 @@ class TestEnv(Env):
             })
             
         except Exception as e:
-            self._log_and_print(f"Error training {model_name}: {str(e)}")
+            self.logger.debug(f"Error training {model_name}: {str(e)}")
             reward = -1.0
             mse, r2 = np.inf, -np.inf
             model_training_time = time.time() - model_start_time
@@ -284,7 +307,7 @@ class TestEnv(Env):
         return observation, reward, terminated, truncated, info
     
     def reset(self, seed: Optional[int] = None) -> Tuple[np.ndarray, Dict]:
-        """Environment'ı sıfırla"""
+        self.logger.debug("Resetting environment for new episode")
         super().reset(seed=seed)
         
         self.episode_start_time = time.time()
@@ -305,11 +328,11 @@ class TestEnv(Env):
             }
             for model in self.models
         }
-        
-        self._log_and_print("\n" + "="*70)
-        self._log_and_print("Environment Reset")
-        self._log_and_print("="*70 + "\n")
-        
+
+        self.logger.debug("\n" + "="*70)
+        self.logger.debug("Environment Reset")
+        self.logger.debug("="*70 + "\n")
+
         observation = self.get_observation_data()
         info = self.get_info()
         
@@ -317,18 +340,18 @@ class TestEnv(Env):
     
     def render(self):
         if len(self.all_results) == 0:
-            self._log_and_print("Henüz sonuç yok!")
+            self.logger.debug("Henüz sonuç yok!")
             return
         
         # Episode toplam süre
         episode_total_time = time.time() - self.episode_start_time if self.episode_start_time else 0
         
         # ============ TEXT REPORT ============
-        self._log_and_print("\n" + "="*70)
-        self._log_and_print(f"EPISODE SUMMARY - Step: {self.current_step}/{self.max_steps}")
-        self._log_and_print("="*70)
-        self._log_and_print(f"Total Episode Time: {episode_total_time:.2f}s ({episode_total_time/60:.2f}m)")
-        self._log_and_print("="*70)
+        self.logger.debug("\n" + "="*70)
+        self.logger.debug(f"EPISODE SUMMARY - Step: {self.current_step}/{self.max_steps}")
+        self.logger.debug("="*70)
+        self.logger.debug(f"Total Episode Time: {episode_total_time:.2f}s ({episode_total_time/60:.2f}m)")
+        self.logger.debug("="*70)
         
         summary_data = []
         
@@ -341,13 +364,13 @@ class TestEnv(Env):
                 total_time = stats.get('total_time', 0)
                 avg_time = total_time / stats['count'] if stats['count'] > 0 else 0
                 
-                self._log_and_print(f"\n🤖 {model}:")
-                self._log_and_print(f"   Selection: {stats['count']} times")
-                self._log_and_print(f"   Average MSE: {avg_mse:.6f}")
-                self._log_and_print(f"   Average R²:  {avg_r2:.6f}")
-                self._log_and_print(f"   Average Reward: {avg_reward:.6f}")
-                self._log_and_print(f"   Total Training Time: {total_time:.2f}s")
-                self._log_and_print(f"   Average Training Time: {avg_time:.2f}s")
+                self.logger.debug(f"\n🤖 {model}:")
+                self.logger.debug(f"   Selection: {stats['count']} times")
+                self.logger.debug(f"   Average MSE: {avg_mse:.6f}")
+                self.logger.debug(f"   Average R²:  {avg_r2:.6f}")
+                self.logger.debug(f"   Average Reward: {avg_reward:.6f}")
+                self.logger.debug(f"   Total Training Time: {total_time:.2f}s")
+                self.logger.debug(f"   Average Training Time: {avg_time:.2f}s")
                 
                 summary_data.append({
                     'model': model,
@@ -360,8 +383,8 @@ class TestEnv(Env):
                 })
         
         best_model = self.get_best_model()
-        self._log_and_print(f"\n🏆 Best Model: {best_model}")
-        self._log_and_print("="*70)
+        self.logger.debug(f"\n🏆 Best Model: {best_model}")
+        self.logger.debug("="*70)
         
         # ============ SAVE JSON SUMMARY ============
         json_summary = {
@@ -377,16 +400,17 @@ class TestEnv(Env):
         with open(f"{self.output_dir}/summary.json", "w") as f:
             json.dump(json_summary, f, indent=2)
         
-        self._log_and_print(f"\nSummary saved to: {self.output_dir}/summary.json")
+        self.logger.debug(f"\nSummary saved to: {self.output_dir}/summary.json")
         
         # ============ PLOTS ============
         if summary_data:
             self._create_plots(summary_data)
-            self._log_and_print(f"Plots saved to: {self.output_dir}/plots/")
+            self.logger.debug(f"Plots saved to: {self.output_dir}/plots/")
         
-        self._log_and_print("="*70 + "\n")
+        self.logger.debug("="*70 + "\n")
     
     def _create_plots(self, summary_data):
+        self.logger.debug("Creating performance plots")
         if not summary_data:
             return
         
@@ -524,7 +548,7 @@ class TestEnv(Env):
             self._create_radar_plot(summary_data)
     
     def _create_radar_plot(self, summary_data):
-        # Normalize metrics (0-1)
+        self.logger.debug("Creating radar plot for model comparison")
         labels = ['Avg Reward', 'Avg R²', 'Speed\n(1/time)']
         
         fig, ax = plt.subplots(figsize=(10, 10), subplot_kw=dict(projection='polar'))
@@ -569,8 +593,9 @@ class TestEnv(Env):
     
     def close(self):
         if hasattr(self, 'log_file') and self.log_file:
-            self._log_and_print(f"\n{'='*70}")
-            self._log_and_print(f"Training ended at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-            self._log_and_print(f"All outputs saved to: {self.output_dir}")
-            self._log_and_print(f"{'='*70}")
-            self.log_file.close()
+            self.logger.info(f"\n{'='*70}")
+            self.logger.info(f"Training ended at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            self.logger.info(f"All outputs saved to: {self.output_dir}")
+            self.logger.info(f"{'='*70}")
+            self.logger.info("Closing log file.")
+            logging.shutdown()
