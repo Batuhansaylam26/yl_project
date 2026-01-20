@@ -222,13 +222,13 @@ def timesNet_config(trial: optuna.trial.Trial):
             'T_max' : 10
         },
         # Lightning Trainer ayarları
-        'max_steps': 1000,
+        'max_steps': 250,
         'val_check_steps': 10,
         'early_stop_patience_steps': 5,
         'scaler_type': 'standard',
         'random_seed': 26,
         'val_check_steps': 10,            # Her  step'te validation
-        'max_steps': 1000,               # Maksimum eğitim step sayısı
+        'max_steps': 250,               # Maksimum eğitim step sayısı
         'accelerator': 'auto',        # GPU varsa kullan
         'enable_progress_bar': True, # Progress bar kapat (gym için)
         'enable_model_summary': True,
@@ -253,7 +253,7 @@ def GRU_config(trial: optuna.trial.Trial):
             'T_max' : 10
         },
         # Lightning Trainer ayarları
-        'max_steps': 1000,
+        'max_steps': 250,
         'val_check_steps': 10,
         'early_stop_patience_steps': 5,
         'scaler_type': 'standard',
@@ -282,7 +282,7 @@ def LSTM_config(trial: optuna.trial.Trial):
             'T_max' : 10
         },
         # Lightning Trainer ayarları
-        'max_steps': 1000,
+        'max_steps': 250,
         'val_check_steps': 10,
         'early_stop_patience_steps': 5,
         'scaler_type': 'standard',
@@ -312,7 +312,7 @@ def KAN_config(trial: optuna.trial.Trial):
             'T_max' : 10
         },
         # Lightning Trainer ayarları
-        'max_steps': 1000,
+        'max_steps': 250,
         'val_check_steps': 10,
         'early_stop_patience_steps': 5,
         'scaler_type': 'standard',
@@ -341,7 +341,7 @@ def VanillaTransformer_config(trial: optuna.trial.Trial):
             'T_max' : 10
         },
         # Lightning Trainer ayarları
-        'max_steps': 1000,
+        'max_steps': 250,
         'val_check_steps': 10,
         'early_stop_patience_steps': 5,
         'scaler_type': 'standard',

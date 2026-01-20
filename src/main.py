@@ -38,9 +38,12 @@ def main() -> None:
     # UCB parameters
     parser.add_argument('--ucb-c', type=float, default=2.0,
                        help='UCB exploration parameter')
+    parser.add_argument(
+        '--experiment_name', type=str, default='ucb_test_env',
+        help='Experiment name for logging'
+    )
     args = parser.parse_args()
 
-    #root_logger = setup_logging(log_dir='logs/', name='ucb_test_env')
 
 
 
@@ -71,7 +74,8 @@ def main() -> None:
         horizon=args.horizon,
         max_steps=args.max_steps,
         exog_vars=args.exogenous_cols,
-        model_n_trials=args.model_n_trials
+        model_n_trials=args.model_n_trials,
+        experiment_name=args.experiment_name
 
     )
     models = [
@@ -97,7 +101,7 @@ def main() -> None:
         
         while not done:
             action = agent.select_action()
-            observation, reward, terminated, truncated, info = env.step(action)
+            observation, reward, terminated, truncated, info = env.step(action, episode=episode)
             agent.update(action, reward)
             print(f"Step: {step_count} | Action: {action} ({env.models[action]}) | Reward: {reward:.6f}")
             step_count += 1
