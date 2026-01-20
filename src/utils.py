@@ -65,8 +65,15 @@ def create_callbacks(early_stop_patience: int = 5, model_name: str = ''):
         
         return callbacks
 
-def get_logger(name: str = 'neuralforecast'):
-    wandb_logger = WandbLogger(project=name)
+def get_logger(
+        name: str = 'neuralforecast',
+        project_name: str = 'neuralforecast_project'
+               
+    ):
+    wandb_logger = WandbLogger(
+        project=project_name,
+        name = name
+    )
 
     return wandb_logger
 
@@ -196,7 +203,6 @@ def save_episode_csv(episode_stats: list, log_dir: str):
 
 
 def timesNet_config(trial: optuna.trial.Trial):
-    callbacks = create_callbacks(early_stop_patience=5, model_name='TimesNet')
     config = {
         'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
         'hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
@@ -223,11 +229,9 @@ def timesNet_config(trial: optuna.trial.Trial):
         'random_seed': 26,
         'val_check_steps': 10,            # Her  step'te validation
         'max_steps': 1000,               # Maksimum eğitim step sayısı
-        'callbacks': callbacks,
         'accelerator': 'auto',        # GPU varsa kullan
         'enable_progress_bar': True, # Progress bar kapat (gym için)
         'enable_model_summary': True,
-        'logger': get_logger(name='TimesNet'),
         'enable_checkpointing': True,
         'enable_progress_bar': True
     }
@@ -256,9 +260,7 @@ def GRU_config(trial: optuna.trial.Trial):
         'random_seed': 26,
         'enable_progress_bar': True,
         'enable_model_summary': True,
-        'logger': get_logger(name='GRU'),
         'enable_checkpointing': True,
-        'callbacks': create_callbacks(early_stop_patience=5, model_name='GRU'),
         'accelerator': 'auto',
     }
     return config
@@ -287,9 +289,7 @@ def LSTM_config(trial: optuna.trial.Trial):
         'random_seed': 26,
         'enable_progress_bar': True,
         'enable_model_summary': True,
-        'logger': get_logger(name='LSTM'),
         'enable_checkpointing': True,
-        'callbacks': create_callbacks(early_stop_patience=5, model_name='LSTM'),
         'accelerator': 'auto'
     }
     return config
@@ -319,9 +319,7 @@ def KAN_config(trial: optuna.trial.Trial):
         'random_seed': 26,
         'enable_progress_bar': True,
         'enable_model_summary': True,
-        'logger': get_logger(name='KAN'),
         'enable_checkpointing': True,
-        'callbacks': create_callbacks(early_stop_patience=5, model_name='KAN'),
         'accelerator': 'auto'
     }
     return config
@@ -350,9 +348,7 @@ def VanillaTransformer_config(trial: optuna.trial.Trial):
         'random_seed': 26,
         'enable_progress_bar': True,
         'enable_model_summary': True,       
-        'logger': get_logger(name='VanillaTransformer'),
         'enable_checkpointing': True,
-        'callbacks': create_callbacks(early_stop_patience=5, model_name='VanillaTransformer'),
         'accelerator': 'auto',
     }
     return config

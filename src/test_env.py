@@ -5,7 +5,7 @@ from neuralforecast.auto import AutoTimesNet, AutoVanillaTransformer, AutoGRU, A
 from neuralforecast import NeuralForecast
 from typing import Tuple, Dict, Optional, List
 from sklearn.metrics import mean_squared_error, r2_score
-from utils import create_callbacks, timesNet_config, LSTM_config, GRU_config, KAN_config, VanillaTransformer_config, get_auto_model_config, setup_logging
+from utils import create_callbacks, timesNet_config, LSTM_config, GRU_config, KAN_config, VanillaTransformer_config, get_auto_model_config, setup_logging, get_logger, create_callbacks
 import os
 import time
 import json
@@ -27,7 +27,8 @@ class TestEnv(Env):
                  model_n_trials: int = 10,
                  model_patience: int = 5,
                  exog_vars: Optional[List[str]] = None,  
-                 use_exog: bool = False  
+                 use_exog: bool = False,
+                 experiment_name = "Experiment_v3"
     ):
         super(TestEnv, self).__init__()
         
@@ -40,6 +41,7 @@ class TestEnv(Env):
         self.model_patience = model_patience
         self.use_exog = use_exog
         self.exog_vars = exog_vars if exog_vars else []
+        self.experiment_name = experiment_name
 
         # Kullanılacak modellerin isim listesi
         self.models = [
@@ -156,7 +158,7 @@ class TestEnv(Env):
         
         return best_model if best_model else self.models[0]
     
-    def create_model(self, model_name: str):
+    def create_model(self, model_name: str, episode:int):
         self.logger.debug(f"Creating model: {model_name}") 
         if model_name == 'TimesNet':
             config = get_auto_model_config(
@@ -166,6 +168,11 @@ class TestEnv(Env):
             )
             if self.use_exog and self.exog_vars:
                 config['hist_exog_list'] = self.exog_vars
+            name = f"TimesNet_ep{episode}_step{self.current_step}"
+            logger = get_logger(name=name, project=self.experiment_name)
+            config['logger'] = logger
+            callbacks = create_callbacks(early_stop_patience=self.model_patience, model_name=name)
+            config['callbacks'] = callbacks
             self.logger.debug(f"TimesNet config: {config}")
             return AutoTimesNet(**config)
         elif model_name == 'VanillaTransformer':
@@ -176,6 +183,11 @@ class TestEnv(Env):
             )
             if self.use_exog and self.exog_vars:
                 config['hist_exog_list'] = self.exog_vars
+            name = f"VanillaTransformer_ep{episode}_step{self.current_step}"
+            logger = get_logger(name=name, project=self.experiment_name)
+            config['logger'] = logger
+            callbacks = create_callbacks(early_stop_patience=self.model_patience, model_name=name)
+            config['callbacks'] = callbacks
             self.logger.debug(f"VanillaTransformer config: {config}")
             return AutoVanillaTransformer(**config)
         elif model_name == 'GRU':
@@ -186,6 +198,11 @@ class TestEnv(Env):
             )
             if self.use_exog and self.exog_vars:
                 config['hist_exog_list'] = self.exog_vars
+            name = f"GRU_ep{episode}_step{self.current_step}"
+            logger = get_logger(name=name, project=self.experiment_name)
+            config['logger'] = logger
+            callbacks = create_callbacks(early_stop_patience=self.model_patience, model_name=name)
+            config['callbacks'] = callbacks
             self.logger.debug(f"GRU config: {config}")
             return AutoGRU(**config)
         elif model_name == 'LSTM':
@@ -196,6 +213,11 @@ class TestEnv(Env):
             )
             if self.use_exog and self.exog_vars:
                 config['hist_exog_list'] = self.exog_vars
+            name = f"LSTM_ep{episode}_step{self.current_step}"
+            logger = get_logger(name=name, project=self.experiment_name)
+            config['logger'] = logger
+            callbacks = create_callbacks(early_stop_patience=self.model_patience, model_name=name)
+            config['callbacks'] = callbacks
             self.logger.debug(f"LSTM config: {config}")
             return AutoLSTM(**config)
         elif model_name == 'KAN':
@@ -206,6 +228,11 @@ class TestEnv(Env):
             )
             if self.use_exog and self.exog_vars:
                 config['hist_exog_list'] = self.exog_vars
+            name = f"KAN_ep{episode}_step{self.current_step}"
+            logger = get_logger(name=name, project=self.experiment_name)
+            config['logger'] = logger
+            callbacks = create_callbacks(early_stop_patience=self.model_patience, model_name=name)
+            config['callbacks'] = callbacks
             self.logger.debug(f"KAN config: {config}")
             return AutoKAN(**config)
         else:
@@ -228,7 +255,7 @@ class TestEnv(Env):
         
         return reward, mse, r2
     
-    def step(self, action: int) -> Tuple[np.ndarray, float, bool, bool, Dict]:
+    def step(self, action: int, episode:int) -> Tuple[np.ndarray, float, bool, bool, Dict]:
         self.logger.debug(f"Step {self.current_step + 1}: Action received - {action}")
         model_name = self.models[action]
         
@@ -241,7 +268,7 @@ class TestEnv(Env):
         
         try:
             # Modeli oluştur ve eğit
-            model = self.create_model(model_name)
+            model = self.create_model(model_name, episode)
             nf = NeuralForecast(models=[model], freq=1)
             nf.fit(self.train_data, val_size=self.val_size, verbose=False)
             
