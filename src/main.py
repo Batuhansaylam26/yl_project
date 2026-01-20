@@ -21,11 +21,11 @@ def main() -> None:
                         help='Time Column Name')
     parser.add_argument('--value_col', type=str, default='Z',
                         help='Value Column Name')
-    parser.add_argument('--exogenous_cols', type=str, nargs='*', default=['X', 'Y', 'U'],
+    parser.add_argument('--exogenous_cols', type=list, nargs='*', default=['X', 'Y', 'U'],
                         help='Exogenous Column Names')
     parser.add_argument('--horizon', type=int, default=20,
                         help='Forecast Horizon')
-    parser.add_argument('--max_steps', type=int, default=10,
+    parser.add_argument('--max_steps', type=int, default=5,
                         help='Max Steps per Episode')
     parser.add_argument('--model_n_trials', type=int, default=5,
                         help='Number of Trials for Model Hyperparameter Tuning')
@@ -55,13 +55,17 @@ def main() -> None:
     data = pd.read_csv(args.data_path)
     
     # Veri çerçevesini NeuralForecast formatına dönüştürme
-    nf_data = convert_to_nf_dataframe(data, 
+    X, y = convert_to_nf_dataframe(data, 
                                       time_col=args.time_col, 
                                       value_col=args.value_col,
                                       exogenous_cols=args.exogenous_cols,
                                       id_col=None
     )
-    train_df, test_df = train_test_split(nf_data, test_size=args.test_size, shuffle=False)
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=args.test_size, shuffle=False)
+
+    train_df = pd.concat([X_train, y_train], axis=1)
+    test_df = pd.concat([X_test, y_test], axis=1)
     if args.val_size is None:
         val_size = len(train_df) // 10 * 2
     else:
@@ -108,8 +112,8 @@ def main() -> None:
             
             if terminated:
                 done = True
-
-        env.render()
+        if episode % 5 == 0:
+            env.render()
 
     # Agent stats
     stats = agent.get_stats()

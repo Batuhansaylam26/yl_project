@@ -4,6 +4,8 @@ import logging
 import optuna
 import torch
 import logging.handlers
+import time 
+import wandb
 import pandas as pd
 import numpy as np
 from datetime import datetime
@@ -26,56 +28,15 @@ def convert_to_nf_dataframe(
         nf_df = nf_df.rename(columns={id_col: 'unique_id'})
     else:
         nf_df['unique_id'] = 'series_1'  # Varsayılan seri kimliği
-    columns = ['unique_id', 'ds', 'y']
+    columns = ['unique_id', 'ds']
     if exogenous_cols:
         columns.extend(exogenous_cols)
     if nf_df['ds'].dtype is not int or nf_df['ds'].dtype is not pd.Timestamp:
         nf_df['ds'] = nf_df['ds'].astype('int64')
-    return nf_df[columns]
+    return nf_df[columns] , nf_df['y']
 
 
-def create_callbacks(early_stop_patience: int = 5, model_name: str = ''):
-        callbacks = []
 
-        dirpath = 'checkpoints/'
-        if not os.path.exists(dirpath):
-            os.makedirs(dirpath)
-        
-        # 1. Early Stopping
-        early_stop_callback = EarlyStopping(
-            monitor='valid_loss',           # Validation loss'u izle
-            patience=early_stop_patience,  # N epoch iyileşme yoksa dur
-            mode='min',                   # Loss minimize ediliyor
-            verbose=True,
-            min_delta=0.0001,             # Minimum değişim
-            check_on_train_epoch_end=False
-        )
-        callbacks.append(early_stop_callback)
-        
-        # 2. Model Checkpoint (en iyi modeli kaydet)
-        checkpoint_callback = ModelCheckpoint(
-            monitor='valid_loss',
-            mode='min',
-            save_top_k=1,                # Sadece en iyi modeli kaydet
-            dirpath=dirpath,
-            filename=f'best-{model_name}-'+'{epoch:02d}-{valid_loss:.4f}',
-            verbose=True
-        )
-        callbacks.append(checkpoint_callback)
-        
-        return callbacks
-
-def get_logger(
-        name: str = 'neuralforecast',
-        project_name: str = 'neuralforecast_project'
-               
-    ):
-    wandb_logger = WandbLogger(
-        project=project_name,
-        name = name
-    )
-
-    return wandb_logger
 
 
 def setup_logging(log_dir: str, verbose: bool = False):
@@ -200,167 +161,262 @@ def save_episode_csv(episode_stats: list, log_dir: str):
     logging.info(f"✓ Episode summary CSV saved: {csv_path}")
 
 
+def nested_func_to_get_config(
+        n_trials:int, 
+        model_name: str,
+        episode: int,
+        step: int,
+        experiment_name:str,
+        early_stop_patience: int = 5,
+        horizon:int = 20,
+        futr_exog_list: Optional[list] = None
+    ):
+    def create_callbacks():
+        callbacks = []
+
+        dirpath = 'checkpoints/'
+        if not os.path.exists(dirpath):
+            os.makedirs(dirpath)
+        
+        # 1. Early Stopping
+        early_stop_callback = EarlyStopping(
+            monitor='valid_loss',           # Validation loss'u izle
+            patience=early_stop_patience,  # N epoch iyileşme yoksa dur
+            mode='min',                   # Loss minimize ediliyor
+            verbose=True,
+            min_delta=0.0001,             # Minimum değişim
+            check_on_train_epoch_end=False
+        )
+        callbacks.append(early_stop_callback)
+        
+        # 2. Model Checkpoint (en iyi modeli kaydet)
+        checkpoint_callback = ModelCheckpoint(
+            monitor='valid_loss',
+            mode='min',
+            save_top_k=1,                # Sadece en iyi modeli kaydet
+            dirpath=dirpath,
+            filename=f'best-{model_name}-ep{episode}_step{step}'+'{epoch:02d}-{valid_loss:.4f}',
+            verbose=True
+        )
+        callbacks.append(checkpoint_callback)
+        
+        return callbacks
 
 
-def timesNet_config(trial: optuna.trial.Trial):
-    config = {
-        'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
-        'hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
-        'dropout': trial.suggest_float('dropout', 0.0, 0.5),
-        'conv_hidden_size': trial.suggest_categorical('conv_hidden_size', [16, 32, 64, 128]),
-        'top_k': trial.suggest_int('top_k', 3, 7),
-        'num_kernels': trial.suggest_int('num_kernels', 4, 8),
-        'encoder_layers': trial.suggest_int('encoder_layers', 1, 4),
-        'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
+
+
+    base_trainer_config = {
         'optimizer': torch.optim.Adadelta,
         'optimizer_kwargs': {
             'rho': 0.75,
-            'lr': 1e-3,  # learning_rate burada
+            'lr': 1e-3,
         },
         'lr_scheduler': torch.optim.lr_scheduler.CosineAnnealingLR,
         'lr_scheduler_kwargs': {
-            'T_max' : 10
+            'T_max': 10
         },
-        # Lightning Trainer ayarları
         'max_steps': 250,
         'val_check_steps': 10,
-        'early_stop_patience_steps': 5,
+        'early_stop_patience_steps': early_stop_patience,
         'scaler_type': 'standard',
         'random_seed': 26,
-        'val_check_steps': 10,            # Her  step'te validation
-        'max_steps': 250,               # Maksimum eğitim step sayısı
-        'accelerator': 'auto',        # GPU varsa kullan
-        'enable_progress_bar': True, # Progress bar kapat (gym için)
-        'enable_model_summary': True,
-        'enable_checkpointing': True,
-        'enable_progress_bar': True
-    }
-    return config
-
-def GRU_config(trial: optuna.trial.Trial):
-    config = {
-        'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
-        'encoder_hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
-        'encoder_n_layers': trial.suggest_int('encoder_n_layers', 1, 3),
-        'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
-        'optimizer': torch.optim.Adadelta,
-        'optimizer_kwargs': {
-            'rho': 0.75,
-            'lr': 1e-3,  
-        },
-        'lr_scheduler': torch.optim.lr_scheduler.CosineAnnealingLR,
-        'lr_scheduler_kwargs': {
-            'T_max' : 10
-        },
-        # Lightning Trainer ayarları
-        'max_steps': 250,
-        'val_check_steps': 10,
-        'early_stop_patience_steps': 5,
-        'scaler_type': 'standard',
-        'random_seed': 26,
-        'enable_progress_bar': True,
-        'enable_model_summary': True,
-        'enable_checkpointing': True,
         'accelerator': 'auto',
-    }
-    return config
-
-def LSTM_config(trial: optuna.trial.Trial):
-    config = {
-        'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
-        'encoder_hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
-        'encoder_n_layers': trial.suggest_int('encoder_n_layers', 1, 3),
-        'decoder_hidden_size': trial.suggest_categorical('decoder_hidden_size', [32, 64, 128, 256]),
-        'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
-        'optimizer': torch.optim.Adadelta,
-        'optimizer_kwargs': {
-            'rho': 0.75,
-            'lr': 1e-3,  # learning_rate burada
-        },
-        'lr_scheduler': torch.optim.lr_scheduler.CosineAnnealingLR,
-        'lr_scheduler_kwargs': {
-            'T_max' : 10
-        },
-        # Lightning Trainer ayarları
-        'max_steps': 250,
-        'val_check_steps': 10,
-        'early_stop_patience_steps': 5,
-        'scaler_type': 'standard',
-        'random_seed': 26,
         'enable_progress_bar': True,
         'enable_model_summary': True,
         'enable_checkpointing': True,
-        'accelerator': 'auto'
     }
-    return config
 
-def KAN_config(trial: optuna.trial.Trial):
-    config = {
-        'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
-        'hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
-        'grid_size': trial.suggest_categorical('grid_size', [5, 10, 15, 20]),
-        'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
-        'spline_order': trial.suggest_categorical('spline_order', [2, 3, 4]),
-        'scaler_type': trial.suggest_categorical('scaler_type', ['standard', 'minmax','robust']),
-        'optimizer': torch.optim.Adadelta,
-        'optimizer_kwargs': {
-            'rho': 0.75,
-            'lr': 1e-3,  # learning_rate burada
-        },
-        'lr_scheduler': torch.optim.lr_scheduler.CosineAnnealingLR,
-        'lr_scheduler_kwargs': {
-            'T_max' : 10
-        },
-        # Lightning Trainer ayarları
-        'max_steps': 250,
-        'val_check_steps': 10,
-        'early_stop_patience_steps': 5,
-        'scaler_type': 'standard',
-        'random_seed': 26,
-        'enable_progress_bar': True,
-        'enable_model_summary': True,
-        'enable_checkpointing': True,
-        'accelerator': 'auto'
-    }
-    return config
+    def timesNet_config(trial: optuna.trial.Trial):
+        #if wandb.run is not None:
+#            wandb.finish()
+        if hasattr(trial, 'number'):
+            trial_id_str = f"T{trial.number:02d}"
+        else:
+            # MockTrial durumu: WandB'de çöp veri oluşmaması için rastgele bir etiket
+            trial_id_str = f"mock_{int(time.time())}"
 
-def VanillaTransformer_config(trial: optuna.trial.Trial):
-    config = {
-        'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
-        'n_head': trial.suggest_categorical('nhead', [2, 4, 8]),
-        'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
-        'windows_batch_size': trial.suggest_categorical('windows_batch_size', [8, 16, 32]),
-        'scaler_type': trial.suggest_categorical('scaler_type', ['standard', 'minmax','robust']),
-        'optimizer': torch.optim.Adadelta,
-        'optimizer_kwargs': {
-            'rho': 0.75,
-            'lr': 1e-3,  # learning_rate burada
-        },
-        'lr_scheduler': torch.optim.lr_scheduler.CosineAnnealingLR,
-        'lr_scheduler_kwargs': {
-            'T_max' : 10
-        },
-        # Lightning Trainer ayarları
-        'max_steps': 250,
-        'val_check_steps': 10,
-        'early_stop_patience_steps': 5,
-        'scaler_type': 'standard',
-        'random_seed': 26,
-        'enable_progress_bar': True,
-        'enable_model_summary': True,       
-        'enable_checkpointing': True,
-        'accelerator': 'auto',
-    }
-    return config
+        # 2. WandB için benzersiz bir ID (id) ve görünen isim (name)
+        # 'id' aynı kalırsa WandB üzerine yazar. 'id' değişirse yeni kayıt açar.
+        run_id = f"run_{model_name}_ep{episode:03d}_s{step:03d}_{trial_id_str}"
+        run_name = f"{model_name}_Ep{episode}_S{step}_{trial_id_str}"
+        
+        wandb_logger = WandbLogger(
+            project=experiment_name,
+            name=run_name,
+            id=run_id,              # Benzersiz ID: Üst üste yazmayı engeller
+            group=f"Ep{episode:03d}_Step{step:03d}_{model_name}", # Modelleri gruplar
+            reinit=True,            # Aynı süreçte yeni bir run başlatmaya izin verir
+            settings=wandb.Settings(start_method="thread") # Çakışmaları önlemek için thread modu
+        )
+        config = {
+            'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+            'hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
+            'dropout': trial.suggest_float('dropout', 0.0, 0.5),
+            'conv_hidden_size': trial.suggest_categorical('conv_hidden_size', [16, 32, 64, 128]),
+            'top_k': trial.suggest_int('top_k', 3, 7),
+            'num_kernels': trial.suggest_int('num_kernels', 4, 8),
+            'encoder_layers': trial.suggest_int('encoder_layers', 1, 4),
+            'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
+            **base_trainer_config,
+            # Lightning Trainer ayarları
+            #'logger': wandb_logger,
+            'logger': None,
+            'callbacks' : create_callbacks()
+        }
+        if futr_exog_list is not None:
+            config['futr_exog_list'] = futr_exog_list
+        return config
 
+    def GRU_config(trial: optuna.trial.Trial):
+        #if wandb.run is not None:
+#            wandb.finish()
+        if hasattr(trial, 'number'):
+            trial_id_str = f"T{trial.number:02d}"
+        else:
+            # MockTrial durumu: WandB'de çöp veri oluşmaması için rastgele bir etiket
+            trial_id_str = f"mock_{int(time.time())}"
 
-# Configuration
-def get_auto_model_config(  
-                          n_trials, 
-                          model_name: str = 'TimesNet',
-                          horizon:int = 20,
-                          
-) -> dict:
+        # 2. WandB için benzersiz bir ID (id) ve görünen isim (name)
+        # 'id' aynı kalırsa WandB üzerine yazar. 'id' değişirse yeni kayıt açar.
+        run_id = f"run_{model_name}_ep{episode:03d}_s{step:03d}_{trial_id_str}"
+        run_name = f"{model_name}_Ep{episode}_S{step}_{trial_id_str}"
+        
+        wandb_logger = WandbLogger(
+            project=experiment_name,
+            name=run_name,
+            id=run_id,              # Benzersiz ID: Üst üste yazmayı engeller
+            group=f"Ep{episode:03d}_Step{step:03d}_{model_name}", # Modelleri gruplar
+            reinit=True,            # Aynı süreçte yeni bir run başlatmaya izin verir
+            settings=wandb.Settings(start_method="thread") # Çakışmaları önlemek için thread modu
+        )
+        config = {
+            'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+            'encoder_hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
+            'encoder_n_layers': trial.suggest_int('encoder_n_layers', 1, 3),
+            'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
+            **base_trainer_config,
+            # Lightning Trainer ayarları
+            #'logger': wandb_logger,
+            'logger': None,
+            'callbacks' : create_callbacks()
+        }
+        if futr_exog_list is not None:
+            config['futr_exog_list'] = futr_exog_list
+        return config
+
+    def LSTM_config(trial: optuna.trial.Trial):
+        #if wandb.run is not None:
+#            wandb.finish()
+        if hasattr(trial, 'number'):
+            trial_id_str = f"T{trial.number:02d}"
+        else:
+            # MockTrial durumu: WandB'de çöp veri oluşmaması için rastgele bir etiket
+            trial_id_str = f"mock_{int(time.time())}"
+
+        # 2. WandB için benzersiz bir ID (id) ve görünen isim (name)
+        # 'id' aynı kalırsa WandB üzerine yazar. 'id' değişirse yeni kayıt açar.
+        run_id = f"run_{model_name}_ep{episode:03d}_s{step:03d}_{trial_id_str}"
+        run_name = f"{model_name}_Ep{episode}_S{step}_{trial_id_str}"
+        
+        wandb_logger = WandbLogger(
+            project=experiment_name,
+            name=run_name,
+            id=run_id,              # Benzersiz ID: Üst üste yazmayı engeller
+            group=f"Ep{episode:03d}_Step{step:03d}_{model_name}", # Modelleri gruplar
+            reinit=True,            # Aynı süreçte yeni bir run başlatmaya izin verir
+            settings=wandb.Settings(start_method="thread") # Çakışmaları önlemek için thread modu
+        )
+        config = {
+            'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+            'encoder_hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
+            'encoder_n_layers': trial.suggest_int('encoder_n_layers', 1, 3),
+            'decoder_hidden_size': trial.suggest_categorical('decoder_hidden_size', [32, 64, 128, 256]),
+            'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
+            **base_trainer_config,
+            # Lightning Trainer ayarları
+            #'logger': wandb_logger,
+            'logger': None,
+            'callbacks' : create_callbacks()
+        }
+        if futr_exog_list is not None:
+            config['futr_exog_list'] = futr_exog_list
+        return config
+
+    def KAN_config(trial: optuna.trial.Trial):
+        #if wandb.run is not None:
+#            wandb.finish()
+        if hasattr(trial, 'number'):
+            trial_id_str = f"T{trial.number:02d}"
+        else:
+            # MockTrial durumu: WandB'de çöp veri oluşmaması için rastgele bir etiket
+            trial_id_str = f"mock_{int(time.time())}"
+
+        # 2. WandB için benzersiz bir ID (id) ve görünen isim (name)
+        # 'id' aynı kalırsa WandB üzerine yazar. 'id' değişirse yeni kayıt açar.
+        run_id = f"run_{model_name}_ep{episode:03d}_s{step:03d}_{trial_id_str}"
+        run_name = f"{model_name}_Ep{episode}_S{step}_{trial_id_str}"
+        
+        wandb_logger = WandbLogger(
+            project=experiment_name,
+            name=run_name,
+            id=run_id,              # Benzersiz ID: Üst üste yazmayı engeller
+            group=f"Ep{episode:03d}_Step{step:03d}_{model_name}", # Modelleri gruplar
+            reinit=True,            # Aynı süreçte yeni bir run başlatmaya izin verir
+            settings=wandb.Settings(start_method="thread") # Çakışmaları önlemek için thread modu
+        )
+        config = {
+            'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+            'hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
+            'grid_size': trial.suggest_categorical('grid_size', [5, 10, 15, 20]),
+            'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
+            'spline_order': trial.suggest_categorical('spline_order', [2, 3, 4]),
+            **base_trainer_config,
+            # Lightning Trainer ayarları
+            #'logger': wandb_logger,
+            'logger': None,
+            'callbacks' : create_callbacks()
+        }
+        if futr_exog_list is not None:
+            config['futr_exog_list'] = futr_exog_list
+        return config
+
+    def VanillaTransformer_config(trial: optuna.trial.Trial):
+        #if wandb.run is not None:
+#            wandb.finish()
+        if hasattr(trial, 'number'):
+            trial_id_str = f"T{trial.number:02d}"
+        else:
+            # MockTrial durumu: WandB'de çöp veri oluşmaması için rastgele bir etiket
+            trial_id_str = f"mock_{int(time.time())}"
+
+        # 2. WandB için benzersiz bir ID (id) ve görünen isim (name)
+        # 'id' aynı kalırsa WandB üzerine yazar. 'id' değişirse yeni kayıt açar.
+        run_id = f"run_{model_name}_ep{episode:03d}_s{step:03d}_{trial_id_str}"
+        run_name = f"{model_name}_Ep{episode}_S{step}_{trial_id_str}"
+        
+        wandb_logger = WandbLogger(
+            project=experiment_name,
+            name=run_name,
+            id=run_id,              # Benzersiz ID: Üst üste yazmayı engeller
+            group=f"Ep{episode:03d}_Step{step:03d}_{model_name}", # Modelleri gruplar
+            reinit=True,            # Aynı süreçte yeni bir run başlatmaya izin verir
+            settings=wandb.Settings(start_method="thread") # Çakışmaları önlemek için thread modu
+        )
+        config = {
+            'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+            'n_head': trial.suggest_categorical('nhead', [2, 4, 8]),
+            'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
+            'windows_batch_size': trial.suggest_categorical('windows_batch_size', [8, 16, 32]),
+            **base_trainer_config,
+            # Lightning Trainer ayarları
+            #'logger': wandb_logger,
+            'logger': None,
+            'callbacks' : create_callbacks()
+        }
+        if futr_exog_list is not None:
+            config['futr_exog_list'] = futr_exog_list
+        return config
+    # Configuration
     model_config = None
     if model_name == 'TimesNet':
         model_config = timesNet_config

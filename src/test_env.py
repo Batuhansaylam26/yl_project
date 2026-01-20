@@ -5,11 +5,12 @@ from neuralforecast.auto import AutoTimesNet, AutoVanillaTransformer, AutoGRU, A
 from neuralforecast import NeuralForecast
 from typing import Tuple, Dict, Optional, List
 from sklearn.metrics import mean_squared_error, r2_score
-from utils import create_callbacks, timesNet_config, LSTM_config, GRU_config, KAN_config, VanillaTransformer_config, get_auto_model_config, setup_logging, get_logger, create_callbacks
+from utils import setup_logging, nested_func_to_get_config
 import os
 import time
 import json
 import logging
+import wandb
 from datetime import datetime
 import matplotlib
 matplotlib.use('Agg') 
@@ -27,7 +28,6 @@ class TestEnv(Env):
                  model_n_trials: int = 10,
                  model_patience: int = 5,
                  exog_vars: Optional[List[str]] = None,  
-                 use_exog: bool = False,
                  experiment_name = "Experiment_v3"
     ):
         super(TestEnv, self).__init__()
@@ -39,9 +39,12 @@ class TestEnv(Env):
         self.max_steps = max_steps
         self.model_n_trials = model_n_trials
         self.model_patience = model_patience
-        self.use_exog = use_exog
+        self.use_exog = False
+        if exog_vars:
+            self.use_exog = True
         self.exog_vars = exog_vars if exog_vars else []
         self.experiment_name = experiment_name
+        self.episode = 0
 
         # Kullanılacak modellerin isim listesi
         self.models = [
@@ -160,83 +163,40 @@ class TestEnv(Env):
     
     def create_model(self, model_name: str, episode:int):
         self.logger.debug(f"Creating model: {model_name}") 
+
+        config_kwargs = {
+            'horizon': self.horizon,
+            'n_trials': self.model_n_trials,
+            'model_name': model_name,
+            'episode': episode,
+            'step': self.current_step,
+            'experiment_name': self.experiment_name,
+            'early_stop_patience': self.model_patience
+        }
+
+        if self.use_exog and self.exog_vars:
+            config_kwargs['futr_exog_list'] = self.exog_vars
+        config = nested_func_to_get_config(
+            **config_kwargs
+        )
+
         if model_name == 'TimesNet':
-            config = get_auto_model_config(
-                horizon=self.horizon,
-                n_trials=self.model_n_trials,
-                model_name=model_name
-            )
-            if self.use_exog and self.exog_vars:
-                config['hist_exog_list'] = self.exog_vars
-            name = f"TimesNet_ep{episode}_step{self.current_step}"
-            logger = get_logger(name=name, project=self.experiment_name)
-            config['logger'] = logger
-            callbacks = create_callbacks(early_stop_patience=self.model_patience, model_name=name)
-            config['callbacks'] = callbacks
             self.logger.debug(f"TimesNet config: {config}")
             return AutoTimesNet(**config)
         elif model_name == 'VanillaTransformer':
-            config = get_auto_model_config(
-                horizon=self.horizon,
-                n_trials=self.model_n_trials,
-                model_name=model_name
-            )
-            if self.use_exog and self.exog_vars:
-                config['hist_exog_list'] = self.exog_vars
-            name = f"VanillaTransformer_ep{episode}_step{self.current_step}"
-            logger = get_logger(name=name, project=self.experiment_name)
-            config['logger'] = logger
-            callbacks = create_callbacks(early_stop_patience=self.model_patience, model_name=name)
-            config['callbacks'] = callbacks
             self.logger.debug(f"VanillaTransformer config: {config}")
             return AutoVanillaTransformer(**config)
         elif model_name == 'GRU':
-            config = get_auto_model_config(
-                horizon=self.horizon,
-                n_trials=self.model_n_trials,
-                model_name=model_name
-            )
-            if self.use_exog and self.exog_vars:
-                config['hist_exog_list'] = self.exog_vars
-            name = f"GRU_ep{episode}_step{self.current_step}"
-            logger = get_logger(name=name, project=self.experiment_name)
-            config['logger'] = logger
-            callbacks = create_callbacks(early_stop_patience=self.model_patience, model_name=name)
-            config['callbacks'] = callbacks
             self.logger.debug(f"GRU config: {config}")
             return AutoGRU(**config)
         elif model_name == 'LSTM':
-            config = get_auto_model_config(
-                horizon=self.horizon,
-                n_trials=self.model_n_trials,
-                model_name=model_name
-            )
-            if self.use_exog and self.exog_vars:
-                config['hist_exog_list'] = self.exog_vars
-            name = f"LSTM_ep{episode}_step{self.current_step}"
-            logger = get_logger(name=name, project=self.experiment_name)
-            config['logger'] = logger
-            callbacks = create_callbacks(early_stop_patience=self.model_patience, model_name=name)
-            config['callbacks'] = callbacks
             self.logger.debug(f"LSTM config: {config}")
             return AutoLSTM(**config)
         elif model_name == 'KAN':
-            config = get_auto_model_config(
-                horizon=self.horizon,
-                n_trials=self.model_n_trials,
-                model_name=model_name
-            )
-            if self.use_exog and self.exog_vars:
-                config['hist_exog_list'] = self.exog_vars
-            name = f"KAN_ep{episode}_step{self.current_step}"
-            logger = get_logger(name=name, project=self.experiment_name)
-            config['logger'] = logger
-            callbacks = create_callbacks(early_stop_patience=self.model_patience, model_name=name)
-            config['callbacks'] = callbacks
             self.logger.debug(f"KAN config: {config}")
             return AutoKAN(**config)
         else:
-            self.logger.debug(f"Error: Unknown model {model_name}")
+            self.logger.error(f"Error: Unknown model {model_name}")
             raise ValueError(f"Unknown model: {model_name}")
     
     def calculate_reward(self, y_true: np.ndarray, y_pred: np.ndarray) -> Tuple[float, float, float]:
@@ -256,6 +216,8 @@ class TestEnv(Env):
         return reward, mse, r2
     
     def step(self, action: int, episode:int) -> Tuple[np.ndarray, float, bool, bool, Dict]:
+        self.episode = episode
+        
         self.logger.debug(f"Step {self.current_step + 1}: Action received - {action}")
         model_name = self.models[action]
         
@@ -266,59 +228,62 @@ class TestEnv(Env):
         # Model training start
         model_start_time = time.time()
         
-        try:
-            # Modeli oluştur ve eğit
-            model = self.create_model(model_name, episode)
-            nf = NeuralForecast(models=[model], freq=1)
-            nf.fit(self.train_data, val_size=self.val_size, verbose=False)
+        # Modeli oluştur ve eğit
+        model = self.create_model(model_name, episode)
+        nf = NeuralForecast(models=[model], freq=1)
+        nf.fit(self.train_data, val_size=self.val_size, verbose=False)
+        
+        # Model training end
+        model_training_time = time.time() - model_start_time
+        
+        # Store training time
+        if model_name not in self.model_training_times:
+            self.model_training_times[model_name] = []
+        self.model_training_times[model_name].append(model_training_time)
+        
+        self.logger.debug(f"{model_name} training completed in {model_training_time:.2f}s")
+        
+        # Tahmin yap
+        if self.use_exog:
+            # 1. Mevcut zaman adımından sonraki 'horizon' kadar satırı test_data'dan çek
+            # self.test_data içinde ds, unique_id, X, Y, U olmalı.
+            futures_df = self.test_data[self.exog_vars + ['ds', 'unique_id']].head(self.horizon)
             
-            # Model training end
-            model_training_time = time.time() - model_start_time
-            
-            # Store training time
-            if model_name not in self.model_training_times:
-                self.model_training_times[model_name] = []
-            self.model_training_times[model_name].append(model_training_time)
-            
-            self.logger.debug(f"{model_name} training completed in {model_training_time:.2f}s")
-            
-            # Tahmin yap
+            # 2. 'futr_exog' yerine 'futr_df' kullanmalısın
+            forecasts = nf.predict(futr_df=futures_df)
+        else:
             forecasts = nf.predict()
-            y_pred = forecasts[model_name].values
-            y_true = self.test_data['y'].values[:len(y_pred)]
+        y_pred = forecasts[f"Auto{model_name}"].values
+        y_true = self.test_data['y'].values[:len(y_pred)]
+        # Reward hesapla
+        reward, mse, r2 = self.calculate_reward(y_true, y_pred)
+        
+        # İstatistikleri güncelle
+        self.models_performance[model_name]['mse_history'].append(mse)
+        self.models_performance[model_name]['r2_history'].append(r2)
+        self.models_performance[model_name]['reward_history'].append(reward)  
+        self.models_performance[model_name]['count'] += 1
+        self.models_performance[model_name]['total_rewards'] += reward
+        self.models_performance[model_name]['total_time'] += model_training_time  
+        
+        self.logger.debug(f"📊 Results: MSE={mse:.6f}, R²={r2:.6f}, Reward={reward:.6f}")
+        
+        # Episode bilgilerini kaydet
+        self.episode_rewards.append(reward)
+        self.episode_actions.append(action)
+        
+        # Genel sonuçları kaydet
+        self.all_results.append({
+            'episode': episode,
+            'step': self.current_step,
+            'model': model_name,
+            'mse': mse,
+            'r2': r2,
+            'reward': reward,
+            'training_time': model_training_time  
+        })
             
-            # Reward hesapla
-            reward, mse, r2 = self.calculate_reward(y_true, y_pred)
-            
-            # İstatistikleri güncelle
-            self.models_performance[model_name]['mse_history'].append(mse)
-            self.models_performance[model_name]['r2_history'].append(r2)
-            self.models_performance[model_name]['reward_history'].append(reward)  
-            self.models_performance[model_name]['count'] += 1
-            self.models_performance[model_name]['total_rewards'] += reward
-            self.models_performance[model_name]['total_time'] += model_training_time  
-            
-            self.logger.debug(f"📊 Results: MSE={mse:.6f}, R²={r2:.6f}, Reward={reward:.6f}")
-            
-            # Episode bilgilerini kaydet
-            self.episode_rewards.append(reward)
-            self.episode_actions.append(action)
-            
-            # Genel sonuçları kaydet
-            self.all_results.append({
-                'step': self.current_step,
-                'model': model_name,
-                'mse': mse,
-                'r2': r2,
-                'reward': reward,
-                'training_time': model_training_time  
-            })
-            
-        except Exception as e:
-            self.logger.debug(f"Error training {model_name}: {str(e)}")
-            reward = -1.0
-            mse, r2 = np.inf, -np.inf
-            model_training_time = time.time() - model_start_time
+
         
         # Step'i artır
         self.current_step += 1
@@ -330,6 +295,9 @@ class TestEnv(Env):
         # Yeni observation
         observation = self.get_observation_data()
         info = self.get_info()
+
+        if wandb.run is not None:
+            wandb.finish()
         
         return observation, reward, terminated, truncated, info
     
@@ -343,18 +311,7 @@ class TestEnv(Env):
         self.episode_rewards = []
         self.episode_actions = []
         
-        # Model istatistiklerini SIFIRLA
-        self.models_performance = {
-            model: {
-                'mse_history': [],
-                'r2_history': [],
-                'reward_history': [],  
-                'count': 0,
-                'total_rewards': 0.0,
-                'total_time': 0.0  
-            }
-            for model in self.models
-        }
+
 
         self.logger.debug("\n" + "="*70)
         self.logger.debug("Environment Reset")
@@ -369,7 +326,7 @@ class TestEnv(Env):
         if len(self.all_results) == 0:
             self.logger.debug("Henüz sonuç yok!")
             return
-        
+        os.makedirs(f"{self.output_dir}/plots/episode={self.episode}", exist_ok=True)
         # Episode toplam süre
         episode_total_time = time.time() - self.episode_start_time if self.episode_start_time else 0
         
@@ -432,7 +389,7 @@ class TestEnv(Env):
         # ============ PLOTS ============
         if summary_data:
             self._create_plots(summary_data)
-            self.logger.debug(f"Plots saved to: {self.output_dir}/plots/")
+            self.logger.debug(f"Plots saved to: {self.output_dir}/plots/episode={self.episode}/")
         
         self.logger.debug("="*70 + "\n")
     
@@ -463,7 +420,7 @@ class TestEnv(Env):
         
         plt.xticks(rotation=45, ha='right')
         plt.tight_layout()
-        plt.savefig(f"{self.output_dir}/plots/01_selection_count.png", dpi=300, bbox_inches='tight')
+        plt.savefig(f"{self.output_dir}/plots/episode={self.episode}/01_selection_count.png", dpi=300, bbox_inches='tight')
         plt.close()
         
         # ============ PLOT 2: Average Rewards ============
@@ -484,7 +441,7 @@ class TestEnv(Env):
         
         plt.xticks(rotation=45, ha='right')
         plt.tight_layout()
-        plt.savefig(f"{self.output_dir}/plots/02_avg_reward.png", dpi=300, bbox_inches='tight')
+        plt.savefig(f"{self.output_dir}/plots/episode={self.episode}/02_avg_reward.png", dpi=300, bbox_inches='tight')
         plt.close()
         
         # ============ PLOT 3: MSE and R² ============
@@ -523,7 +480,7 @@ class TestEnv(Env):
         ax2.tick_params(axis='x', rotation=45)
         
         plt.tight_layout()
-        plt.savefig(f"{self.output_dir}/plots/03_mse_r2.png", dpi=300, bbox_inches='tight')
+        plt.savefig(f"{self.output_dir}/plots/episode={self.episode}/03_mse_r2.png", dpi=300, bbox_inches='tight')
         plt.close()
         
         # ============ PLOT 4: Training Time ============
@@ -544,7 +501,7 @@ class TestEnv(Env):
         
         plt.xticks(rotation=45, ha='right')
         plt.tight_layout()
-        plt.savefig(f"{self.output_dir}/plots/04_training_time.png", dpi=300, bbox_inches='tight')
+        plt.savefig(f"{self.output_dir}/plots/episode={self.episode}/04_training_time.png", dpi=300, bbox_inches='tight')
         plt.close()
         
         # ============ PLOT 5: Reward History (Line) ============
@@ -567,7 +524,7 @@ class TestEnv(Env):
         ax.grid(alpha=0.3)
         
         plt.tight_layout()
-        plt.savefig(f"{self.output_dir}/plots/05_reward_history.png", dpi=300, bbox_inches='tight')
+        plt.savefig(f"{self.output_dir}/plots/episode={self.episode}/05_reward_history.png", dpi=300, bbox_inches='tight')
         plt.close()
         
         # ============ PLOT 6: Comprehensive Comparison (Radar) ============
@@ -614,7 +571,7 @@ class TestEnv(Env):
         ax.grid(True)
         
         plt.tight_layout()
-        plt.savefig(f"{self.output_dir}/plots/06_radar_comparison.png", 
+        plt.savefig(f"{self.output_dir}/plots/episode={self.episode}/06_radar_comparison.png", 
                    dpi=300, bbox_inches='tight')
         plt.close()
     
