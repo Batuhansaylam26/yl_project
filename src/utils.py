@@ -503,9 +503,9 @@ def get_takens_embedding(
     signal  = time_series['y'].values
     tau_search = np.arange(maxtau)
     values_local_min, opt_ami_local_min, _, _ = opt_ami(signal, maxtau, local_min=True)
-    corr_plot('Local_Mini.png', 'Average Mutual Information (AMI)', tau_search, values_local_min, None, opt_ami_local_min, None, output_path=output_path)    
+    corr_plot('Local_Mini.png', 'Average Mutual Information (AMI)', tau_search, values_local_min, None, opt_ami_local_min,  output_path=output_path)    
     values_threshold, opt_ami_threshold, threshold_ami, idx_ami = opt_ami(signal, maxtau, local_min=False)
-    corr_plot('Threshold.png', 'Average Mutual Information (AMI)', tau_search, values_threshold, threshold_ami, opt_ami_threshold, None, output_path=output_path)
+    corr_plot('Threshold.png', 'Average Mutual Information (AMI)', tau_search, values_threshold, threshold_ami, opt_ami_threshold, output_path=output_path)
     tau_candidates = {
         'AMI Local Min': opt_ami_local_min,
         'AMI Threshold': opt_ami_threshold,

@@ -143,8 +143,7 @@ def main() -> None:
             
             if terminated:
                 done = True
-        if episode % 5 == 0:
-            env.render()
+        env.render()
 
     # Agent stats
     stats = agent.get_stats()
