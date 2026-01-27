@@ -91,11 +91,16 @@ def main() -> None:
 
     train_df = pd.concat([X_train, y_train], axis=1)
     test_df = pd.concat([X_test, y_test], axis=1)
+
+    print(f"Train ds: {train_df['ds'].min()} - {train_df['ds'].max()}")
+    print(f"Test ds: {test_df['ds'].min()} - {test_df['ds'].max()}")
     if  not val_size:
         if args.val_size is None:
             val_size = len(train_df) // 10 * 2
         else:
             val_size = args.val_size
+
+    
 
     
     # Ortamı oluşturma
