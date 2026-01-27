@@ -24,14 +24,15 @@ class TestEnv(Env):
                  val_size: int,
                  test_data: pd.DataFrame,
                  horizon: int = 1,
+                 input_size :int = None,
                  max_steps: int = 1000,
                  model_n_trials: int = 10,
+                 model_max_steps: int = 250,
                  model_patience: int = 5,
-                 exog_vars: Optional[List[str]] = None,  
+                 use_exog: bool = False,
                  experiment_name = "Experiment_v3"
     ):
         super(TestEnv, self).__init__()
-        
         self.train_data = train_data
         self.val_size = val_size
         self.test_data = test_data
@@ -39,12 +40,12 @@ class TestEnv(Env):
         self.max_steps = max_steps
         self.model_n_trials = model_n_trials
         self.model_patience = model_patience
-        self.use_exog = False
-        if exog_vars:
-            self.use_exog = True
-        self.exog_vars = exog_vars if exog_vars else []
+        self.use_exog = use_exog
+        self.exog_vars: List[str] = []
         self.experiment_name = experiment_name
         self.episode = 0
+        self.input_size = input_size
+        self.model_max_steps = model_max_steps
 
         # Kullanılacak modellerin isim listesi
         self.models = [
@@ -118,7 +119,6 @@ class TestEnv(Env):
         self.logger.info(f"   Model patience: {self.model_patience}")
         self.logger.info(f"   Models: {', '.join(self.models)}")
         self.logger.info(f"   Use Exogenous: {self.use_exog}")
-        self.logger.info(f"   Exogenous vars: {self.exog_vars if self.use_exog else 'None'}")
         self.logger.info("="*70)
 
 
@@ -171,10 +171,14 @@ class TestEnv(Env):
             'episode': episode,
             'step': self.current_step,
             'experiment_name': self.experiment_name,
-            'early_stop_patience': self.model_patience
+            'early_stop_patience': self.model_patience,
+            'model_max_steps': self.model_max_steps,
+            'input_size' : self.input_size
         }
 
-        if self.use_exog and self.exog_vars:
+        if self.use_exog :
+            columns = self.train_data.columns.tolist()
+            self.exog_vars = [col for col in columns if col not in ['ds', 'unique_id', 'y']]
             config_kwargs['futr_exog_list'] = self.exog_vars
         config = nested_func_to_get_config(
             **config_kwargs

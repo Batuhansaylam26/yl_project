@@ -10,5 +10,5 @@
         }
     },
 
-    "postCreateCommand": "apt-get update && apt-get install -y git &&  pip install pandas numpy matplotlib scikit-learn jupyterlab seaborn plotly openpyxl neuralforecast gymnasium lightning wandb && bash ./wandb_conf.sh"
+    "postCreateCommand": "apt-get update && apt-get install -y git &&  pip install pandas  matplotlib scikit-learn jupyterlab seaborn plotly openpyxl neuralforecast gymnasium lightning wandb numba && pip install numpy==2.3.5 && bash ./wandb_conf.sh && pip install git+https://github.com/manu-mannattil/nolitsa.git"
 }

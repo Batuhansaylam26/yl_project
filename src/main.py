@@ -1,6 +1,6 @@
 from test_env import TestEnv
 from agent import UCBAgent
-from utils import convert_to_nf_dataframe, setup_logging, create_episode_summary_table,save_episode_csv
+from utils import convert_to_nf_dataframe, setup_logging, create_episode_summary_table,save_episode_csv, get_takens_embedding
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import os
@@ -21,8 +21,8 @@ def main() -> None:
                         help='Time Column Name')
     parser.add_argument('--value_col', type=str, default='Z',
                         help='Value Column Name')
-    parser.add_argument('--exogenous_cols', type=list, nargs='*', default=['X', 'Y', 'U'],
-                        help='Exogenous Column Names')
+    parser.add_argument('--use_exogenous_cols', type=bool, default=True,
+                        help='Use Exogenous Columns or Not')
     parser.add_argument('--horizon', type=int, default=20,
                         help='Forecast Horizon')
     parser.add_argument('--max_steps', type=int, default=5,
@@ -35,6 +35,14 @@ def main() -> None:
                         help='Test Set Size (Fraction)')
     parser.add_argument('--n_episodes', type=int, default=5,
                         help='Number of Episodes to Run')
+    parser.add_argument('--seed', type=int, default=42,
+                        help='Random Seed for Reproducibility')
+    parser.add_argument('--model_max_steps', type=int, default=250,
+                        help='Maximum Training Steps for Each Model')
+    parser.add_argument('--patience', type=int, default=10,
+                        help='Early Stopping Patience for Model Training')
+    parser.add_argument('--user_takens_embedding', type=bool, default=False,
+                        help='Use Takens Embedding for Exogenous Variables')
     # UCB parameters
     parser.add_argument('--ucb-c', type=float, default=2.0,
                        help='UCB exploration parameter')
@@ -53,33 +61,56 @@ def main() -> None:
     os.environ['RAY_TRAIN_ENABLE_V2_MIGRATION_WARNINGS'] = '0'
     # Örnek veri yükleme
     data = pd.read_csv(args.data_path)
+
+    
+
     
     # Veri çerçevesini NeuralForecast formatına dönüştürme
-    X, y = convert_to_nf_dataframe(data, 
+    data = convert_to_nf_dataframe(data, 
                                       time_col=args.time_col, 
                                       value_col=args.value_col,
-                                      exogenous_cols=args.exogenous_cols,
+                                      use_exogenous_cols=args.use_exogenous_cols,
                                       id_col=None
+    )
+    val_size = None
+    input_size = None
+    if args.user_takens_embedding:
+        data, input_size, val_size = get_takens_embedding(
+            data, 
+            max_tau=1000
+        )
+        
+    y = data['y']
+    X = data.drop(
+        'y',
+        inplace = False,
+        axis =1 
     )
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=args.test_size, shuffle=False)
 
     train_df = pd.concat([X_train, y_train], axis=1)
     test_df = pd.concat([X_test, y_test], axis=1)
-    if args.val_size is None:
-        val_size = len(train_df) // 10 * 2
-    else:
-        val_size = args.val_size
+    if  not val_size:
+        if args.val_size is None:
+            val_size = len(train_df) // 10 * 2
+        else:
+            val_size = args.val_size
+
+    
     # Ortamı oluşturma
     env = TestEnv(
         train_data=train_df,
         val_size=val_size,
         test_data=test_df,
+        input_size= input_size,
         horizon=args.horizon,
         max_steps=args.max_steps,
-        exog_vars=args.exogenous_cols,
+        use_exog=args.use_exogenous_cols,
         model_n_trials=args.model_n_trials,
-        experiment_name=args.experiment_name
+        experiment_name=args.experiment_name,
+        model_max_steps=args.model_max_steps,
+        model_patience=args.patience,
 
     )
     models = [

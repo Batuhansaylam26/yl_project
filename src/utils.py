@@ -16,25 +16,36 @@ from pytorch_lightning.loggers import TensorBoardLogger
 from ray import tune
 from JsonHandler import JsonHandler
 from lightning.pytorch.loggers import WandbLogger
+from nolitsa import delay, dimension, utils as nolitsa_utils
+import matplotlib.pyplot as plt
 def convert_to_nf_dataframe(
         df: pd.DataFrame, 
         time_col: str, 
         value_col: str, 
-        exogenous_cols: Optional[list] = None,
+        use_exogenous_cols: bool = False,
         id_col: Optional[str] = None
 ) -> pd.DataFrame:
-    nf_df = df.rename(columns={time_col: 'ds', value_col: 'y'})
+    
+    nf_df = df.copy()
+    nf_df = nf_df.rename(columns={time_col: 'ds', value_col: 'y'})
+    
     if id_col:
         nf_df = nf_df.rename(columns={id_col: 'unique_id'})
     else:
-        nf_df['unique_id'] = 'series_1'  # Varsayılan seri kimliği
-    columns = ['unique_id', 'ds']
-    if exogenous_cols:
+        nf_df['unique_id'] = 'series_1'
+    
+    # Sütun listesi
+    columns = ['unique_id', 'ds', 'y']  # 'y' eksikti!
+    
+    if use_exogenous_cols:
+        exogenous_cols = [col for col in nf_df.columns if col not in ['unique_id', 'ds', 'y']]
         columns.extend(exogenous_cols)
+    
+    # dtype kontrolü düzeltildi
     if nf_df['ds'].dtype is not int or nf_df['ds'].dtype is not pd.Timestamp:
         nf_df['ds'] = nf_df['ds'].astype('int64')
-    return nf_df[columns] , nf_df['y']
-
+    
+    return nf_df[columns]
 
 
 
@@ -167,7 +178,9 @@ def nested_func_to_get_config(
         episode: int,
         step: int,
         experiment_name:str,
+        input_size:int = None,
         early_stop_patience: int = 5,
+        model_max_steps: int = 250,
         horizon:int = 20,
         futr_exog_list: Optional[list] = None
     ):
@@ -215,7 +228,7 @@ def nested_func_to_get_config(
         'lr_scheduler_kwargs': {
             'T_max': 10
         },
-        'max_steps': 250,
+        'max_steps': model_max_steps,
         'val_check_steps': 10,
         'early_stop_patience_steps': early_stop_patience,
         'scaler_type': 'standard',
@@ -249,7 +262,7 @@ def nested_func_to_get_config(
             settings=wandb.Settings(start_method="thread") # Çakışmaları önlemek için thread modu
         )
         config = {
-            'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+            'input_size': input_size if input_size else trial.suggest_categorical('input_size', [24, 48, 72, 96]),
             'hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
             'dropout': trial.suggest_float('dropout', 0.0, 0.5),
             'conv_hidden_size': trial.suggest_categorical('conv_hidden_size', [16, 32, 64, 128]),
@@ -290,7 +303,7 @@ def nested_func_to_get_config(
             settings=wandb.Settings(start_method="thread") # Çakışmaları önlemek için thread modu
         )
         config = {
-            'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+            'input_size': input_size if input_size else trial.suggest_categorical('input_size', [24, 48, 72, 96]),
             'encoder_hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
             'encoder_n_layers': trial.suggest_int('encoder_n_layers', 1, 3),
             'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
@@ -327,7 +340,7 @@ def nested_func_to_get_config(
             settings=wandb.Settings(start_method="thread") # Çakışmaları önlemek için thread modu
         )
         config = {
-            'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+            'input_size': input_size if input_size else trial.suggest_categorical('input_size', [24, 48, 72, 96]),
             'encoder_hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
             'encoder_n_layers': trial.suggest_int('encoder_n_layers', 1, 3),
             'decoder_hidden_size': trial.suggest_categorical('decoder_hidden_size', [32, 64, 128, 256]),
@@ -365,7 +378,7 @@ def nested_func_to_get_config(
             settings=wandb.Settings(start_method="thread") # Çakışmaları önlemek için thread modu
         )
         config = {
-            'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+            'input_size': input_size if input_size else trial.suggest_categorical('input_size', [24, 48, 72, 96]),
             'hidden_size': trial.suggest_categorical('hidden_size', [32, 64, 128, 256]),
             'grid_size': trial.suggest_categorical('grid_size', [5, 10, 15, 20]),
             'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
@@ -403,7 +416,7 @@ def nested_func_to_get_config(
             settings=wandb.Settings(start_method="thread") # Çakışmaları önlemek için thread modu
         )
         config = {
-            'input_size': trial.suggest_categorical('input_size', [24, 48, 72, 96]),
+            'input_size': input_size if input_size else trial.suggest_categorical('input_size', [24, 48, 72, 96]),
             'n_head': trial.suggest_categorical('nhead', [2, 4, 8]),
             'batch_size': trial.suggest_categorical('batch_size', [16, 32, 64, 128]),
             'windows_batch_size': trial.suggest_categorical('windows_batch_size', [8, 16, 32]),
@@ -436,3 +449,134 @@ def nested_func_to_get_config(
         'num_samples': n_trials,     # Optuna trial sayısı
         'config': model_config   # Model yapılandırması
     }
+def opt_ami(signal,max_tau, local_min=True):
+    ami_values = delay.dmi(signal, maxtau=max_tau)
+    if local_min:
+        tau_opt = np.where(np.diff(ami_values) > 0)[0][0]
+        return ami_values, tau_opt, None, None
+    else:
+        threshold_ami = ami_values[0] * (1 / np.exp(1))
+        idx = np.where(ami_values <= threshold_ami)[0]
+        tau_opt = idx[0]
+    return ami_values, tau_opt, threshold_ami, idx
+def corr_plot(name, y_label_title, tau_search, corr_values, threshold, tau_opt, output_path ):
+    plt.figure(figsize=(10, 6))
+    plt.title('Kaos Analizi Parametre Seçimi', fontsize=16)
+    if threshold:
+        plt.axhline(y=threshold, color='green', linestyle='--', label='1/e Eşiği (Traditional)')
+    plt.axvline(x=tau_opt, color='r', linestyle='--', label=f'Belirlenen Tau {tau_opt}')
+    plt.plot(tau_search, corr_values, 'b-', linewidth=2, label='Correlation Value')
+    plt.plot(tau_opt, corr_values[tau_opt], 'ro', markersize=8, label=f'Optimal Tau = {tau_opt}')
+    plt.xlabel('Gecikme (Tau)')
+    plt.ylabel(y_label_title)
+    plt.legend()
+    plt.grid(True, linestyle='--', alpha=0.7)
+    if output_path:
+        path = os.path.join(output_path, name)
+        plt.savefig(path)
+    plt.show()
+
+def fnn_plot(name, dims, fnn_values, m_opt, output_path):
+    plt.figure(figsize=(10, 6))
+    plt.title('False Nearest Neighbors (Boyut Seçimi)', fontsize=16)
+    plt.plot(dims, fnn_values * 100, 'go-', linewidth=2, label='FNN Oranı')
+    plt.axhline(y=1, color='r', linestyle=':', label='%1 Eşiği')
+    plt.plot(m_opt, fnn_values[m_opt-1] * 100, 'rs', markersize=8, label=f'Optimal m = {m_opt}')
+    plt.xlabel('Boyut (m)')
+    plt.ylabel('Yalancı Komşu Oranı (%)')
+    plt.yscale('log') # Küçük değerleri görmek için logaritmik ölçek
+    plt.legend()
+    plt.grid(True, linestyle='--', alpha=0.7)
+    if output_path:
+        path = os.path.join(output_path, name)
+        plt.savefig(path)
+    plt.show()
+def get_takens_embedding(
+        time_series: pd.DataFrame,
+        max_tau: int = 1000,
+        output_path:str = None
+    ) -> pd.DataFrame:
+    if not output_path:
+        output_path = '../preprocess_plots'
+        os.makedirs(output_path, exist_ok=True)
+    maxtau = max_tau
+    signal  = time_series['y'].values
+    tau_search = np.arange(maxtau)
+    values_local_min, opt_ami_local_min, _, _ = opt_ami(signal, maxtau, local_min=True)
+    corr_plot('Local_Mini.png', 'Average Mutual Information (AMI)', tau_search, values_local_min, None, opt_ami_local_min, None, output_path=output_path)    
+    values_threshold, opt_ami_threshold, threshold_ami, idx_ami = opt_ami(signal, maxtau, local_min=False)
+    corr_plot('Threshold.png', 'Average Mutual Information (AMI)', tau_search, values_threshold, threshold_ami, opt_ami_threshold, None, output_path=output_path)
+    tau_candidates = {
+        'AMI Local Min': opt_ami_local_min,
+        'AMI Threshold': opt_ami_threshold,
+    }
+
+    # None/invalid olanları filtrele
+    valid = {k: v for k, v in tau_candidates.items() if v is not None and v > 0}
+
+    # Minimum olanı bul
+    tau_key = min(valid, key=valid.get)
+    tau_opt = valid[tau_key]
+    print(f"Seçilen: {tau_key} = {tau_opt}")
+    print(f"Tümü: {tau_candidates}")
+
+
+
+
+    dims = np.arange(1, 10)
+    f1, f2, f3 = dimension.fnn(signal, 
+                               tau=tau_opt, 
+                               dim=dims, 
+                               R=10.0, 
+                               A=2.0, 
+                               window=50, 
+                               metric='euclidean', 
+                               parallel=True)
+    
+    # 4. Optimal m değerini belirleme (%1 eşiği)
+    # f1 değerinin 0.01'in altına düştüğü ilk indeksi buluyoruz
+    threshold = 0.01
+    valid_dims = np.where(f1 < threshold)[0]
+
+    
+    
+    if len(valid_dims) > 0:
+        optimal_m = dims[valid_dims[0]]
+    else:
+        # Eğer %1 altına düşmüyorsa en düşük değeri veren boyutu al
+        optimal_m = dims[np.argmin(f1)]
+        print(f"Uyarı: FNN oranı %1'in altına düşmedi. En düşük değer seçildi.")
+
+    
+
+    print(f"Hesaplanan Optimal Boyut (m): {optimal_m}")
+    print(f"FNN Oranları (f1): {np.round(f1, 4)}")
+    fnn_plot('FNN_plot.png', dims, f1, optimal_m, None)
+    reconstructed_z = nolitsa_utils.reconstruct(signal, tau=tau_opt, dim=optimal_m)
+
+    # Çıktı Shape: (N - (m-1)*tau, m)
+    # Yani her bir satır, m-boyutlu bir koordinattır.
+    print(f"Orijinal veri uzunluğu: {len(signal)}")
+    print(f"Embedding sonrası yapı: {reconstructed_z.shape}")
+
+        # Embedding sonrası kayıp: (m-1) * tau
+    offset = (optimal_m - 1) * tau_opt
+
+    # Zaman sütunlarını al ve index'i resetle
+    time_df = time_series.loc[offset:, ['unique_id', 'U', 'ds']].reset_index(drop=True)
+
+    # Embedding dataframe
+    emb_df = pd.DataFrame(reconstructed_z, columns=[f'Z_emb_{i+1}' for i in range(optimal_m)])
+    emb_df = emb_df.rename(columns={'Z_emb_1': 'y'})  # İlk sütunu 'y' olarak yeniden adlandır
+
+    # Uzunlukları kontrol et
+    print(f"Time df: {len(time_df)}, Emb df: {len(emb_df)}")
+
+    # Birleştir
+    new_df = pd.concat([time_df, emb_df['y']], axis=1)
+
+    
+
+   
+    
+    return new_df, tau_opt, offset
