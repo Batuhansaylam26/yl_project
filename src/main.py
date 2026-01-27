@@ -75,10 +75,15 @@ def main() -> None:
     val_size = None
     input_size = None
     if args.user_takens_embedding:
-        data, input_size, val_size = get_takens_embedding(
+        _, _,input_size = get_takens_embedding(
             data, 
             max_tau=1000
         )
+    data.drop(
+        ['X','Y'],
+        inplace=True,
+        axis=1
+    )  
         
     y = data['y']
     X = data.drop(
